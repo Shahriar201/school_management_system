@@ -99,6 +99,14 @@
                         <p>Student Shift</p>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('setups.fee.category.view') }}" class="nav-link 
+                    {{ ($route=='setups.fee.category.view')?'active':'' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Fee Category</p>
+                    </a>
+                </li>
             </ul>
 
         </li>

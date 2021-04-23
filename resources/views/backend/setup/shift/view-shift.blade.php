@@ -9,13 +9,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Manage Student Group</h1>
+                    <h1 class="m-0">Manage Student Shift</h1>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Group</li>
+                        <li class="breadcrumb-item active">Shift</li>
                     </ol>
                 </div>
                 <!-- /.col -->
@@ -37,9 +37,9 @@
                     <!-- Custom tabs (Charts with tabs)-->
                     <div class="card">
                         <div class="card-header">
-                            <h3>Student Group List
-                                <a class="btn btn-success float-right btn-sm" href="{{ route('setups.student.group.add') }}">
-                                    <i class="fa fa-plus-circle"></i>Add Student Group</a>
+                            <h3>Student Shift List
+                                <a class="btn btn-success float-right btn-sm" href="{{ route('setups.student.shift.add') }}">
+                                    <i class="fa fa-plus-circle"></i>Add Shift</a>
                                 
                             </h3>
                         </div>
@@ -50,7 +50,7 @@
                                 <thead>
                                     <tr>
                                         <th>SL.</th>
-                                        <th>Student Group</th>
+                                        <th>Shift</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -63,17 +63,17 @@
                                         <td>{{ $value->name }}</td>
 
                                         <td>
-                                            <a title="Edit" id="edit" class="btn btn-sm btn-primary" href="{{ route('setups.student.group.edit', $value->id)}}">
+                                            <a title="Edit" id="edit" class="btn btn-sm btn-primary" href="{{ route('setups.student.shift.edit', $value->id)}}">
                                                 <i class="fa fa-edit">
 
                                                 </i>
                                             </a>
-                                            {{-- <a title="Delete" id="delete" class="btn btn-sm btn-danger" href="
-                                            {{ route('setups.student.group.delete', $value->id) }}">
+                                            <a title="Delete" id="delete" class="btn btn-sm btn-danger" href="
+                                            {{ route('setups.student.shift.delete', $value->id) }}">
                                                 <i class="fa fa-trash">
 
                                                 </i>
-                                            </a> --}}
+                                            </a>
                                         </td>
                                     </tr>
                                         

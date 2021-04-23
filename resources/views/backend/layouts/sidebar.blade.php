@@ -80,7 +80,7 @@
                     <a href="{{ route('setups.student.year.view') }}" class="nav-link 
                     {{ ($route=='setups.student.year.view')?'active':'' }}">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Year</p>
+                        <p>View Year</p>
                     </a>
                 </li>
 
@@ -89,6 +89,14 @@
                     {{ ($route=='setups.student.group.view')?'active':'' }}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Student Group</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('setups.student.shift.view') }}" class="nav-link 
+                    {{ ($route=='setups.student.shift.view')?'active':'' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Student Shift</p>
                     </a>
                 </li>
             </ul>

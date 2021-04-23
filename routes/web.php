@@ -46,7 +46,7 @@ Route::group(['middleware'=>'auth'], function(){
     });
 
     Route::prefix('setups')->group(function(){
-
+        //Student Class
         Route::get('/student/class/view', 'Backend\Setup\StudentClassController@view')->name('setups.student.class.view');
         Route::get('/student/class/add', 'Backend\Setup\StudentClassController@add')->name('setups.student.class.add');
         Route::post('/student/class/store', 'Backend\Setup\StudentClassController@store')->name('setups.student.class.store');  
@@ -54,6 +54,13 @@ Route::group(['middleware'=>'auth'], function(){
         Route::post('/student/class/update/{id}', 'Backend\Setup\StudentClassController@update')->name('setups.student.class.update');
         Route::get('/student/class/delete/{id}', 'Backend\Setup\StudentClassController@delete')->name('setups.student.class.delete');
         
+        //Student year/Session
+        Route::get('/student/year/view', 'Backend\Setup\YearController@view')->name('setups.student.year.view');
+        Route::get('/student/year/add', 'Backend\Setup\YearController@add')->name('setups.student.year.add');
+        Route::post('/student/year/store', 'Backend\Setup\YearController@store')->name('setups.student.year.store');  
+        Route::get('/student/year/edit/{id}', 'Backend\Setup\YearController@edit')->name('setups.student.year.edit');
+        Route::post('/student/year/update/{id}', 'Backend\Setup\YearController@update')->name('setups.student.year.update');
+        Route::get('/student/year/delete/{id}', 'Backend\Setup\YearController@delete')->name('setups.student.year.delete');
     });
 
 });

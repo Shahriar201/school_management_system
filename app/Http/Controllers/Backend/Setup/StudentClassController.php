@@ -58,8 +58,8 @@ class StudentClassController extends Controller
     }
 
     public function delete($id){
-        $slider =  StudentClass::find($id);
-        $slider->delete();
+        $class =  StudentClass::find($id);
+        $class->delete();
 
         return redirect()->route('setups.student.class.view')->with('success', 'Data deleted successfully');
     }

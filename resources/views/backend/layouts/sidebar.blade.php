@@ -64,6 +64,7 @@
                     <i class="fas fa-angle-left right"></i>
                 </p>
             </a>
+
             <ul class="nav nav-treeview">
                 <li class="nav-item">
                     <a href="{{ route('setups.student.class.view') }}" class="nav-link 
@@ -73,6 +74,17 @@
                     </a>
                 </li>
             </ul>
+
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('setups.student.year.view') }}" class="nav-link 
+                    {{ ($route=='setups.student.year.view')?'active':'' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Student Year</p>
+                    </a>
+                </li>
+            </ul>
+
         </li>
 
     </ul>

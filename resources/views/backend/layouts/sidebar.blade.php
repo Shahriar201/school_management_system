@@ -80,7 +80,15 @@
                     <a href="{{ route('setups.student.year.view') }}" class="nav-link 
                     {{ ($route=='setups.student.year.view')?'active':'' }}">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Student Year</p>
+                        <p>Year</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('setups.student.group.view') }}" class="nav-link 
+                    {{ ($route=='setups.student.group.view')?'active':'' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Student Group</p>
                     </a>
                 </li>
             </ul>

@@ -61,6 +61,14 @@ Route::group(['middleware'=>'auth'], function(){
         Route::get('/student/year/edit/{id}', 'Backend\Setup\YearController@edit')->name('setups.student.year.edit');
         Route::post('/student/year/update/{id}', 'Backend\Setup\YearController@update')->name('setups.student.year.update');
         Route::get('/student/year/delete/{id}', 'Backend\Setup\YearController@delete')->name('setups.student.year.delete');
+        
+        //Student Group
+        Route::get('/student/group/view', 'Backend\Setup\GroupController@view')->name('setups.student.group.view');
+        Route::get('/student/group/add', 'Backend\Setup\GroupController@add')->name('setups.student.group.add');
+        Route::post('/student/group/store', 'Backend\Setup\GroupController@store')->name('setups.student.group.store');  
+        Route::get('/student/group/edit/{id}', 'Backend\Setup\GroupController@edit')->name('setups.student.group.edit');
+        Route::post('/student/group/update/{id}', 'Backend\Setup\GroupController@update')->name('setups.student.group.update');
+        Route::get('/student/group/delete/{id}', 'Backend\Setup\GroupController@delete')->name('setups.student.group.delete');
     });
 
 });

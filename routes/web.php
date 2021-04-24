@@ -85,6 +85,14 @@ Route::group(['middleware'=>'auth'], function(){
         Route::get('/fee/category/edit/{id}', 'Backend\Setup\FeeCategoryController@edit')->name('setups.fee.category.edit');
         Route::post('/fee/category/update/{id}', 'Backend\Setup\FeeCategoryController@update')->name('setups.fee.category.update');
         Route::get('/fee/category/delete/{id}', 'Backend\Setup\FeeCategoryController@delete')->name('setups.fee.category.delete');
+        
+        //Fee Category Amount
+        Route::get('/fee/amount/view', 'Backend\Setup\FeeAmountController@view')->name('setups.fee.amount.view');
+        Route::get('/fee/amount/add', 'Backend\Setup\FeeAmountController@add')->name('setups.fee.amount.add');
+        Route::post('/fee/amount/store', 'Backend\Setup\FeeAmountController@store')->name('setups.fee.amount.store');  
+        Route::get('/fee/amount/edit/{id}', 'Backend\Setup\FeeAmountController@edit')->name('setups.fee.amount.edit');
+        Route::post('/fee/amount/update/{id}', 'Backend\Setup\FeeAmountController@update')->name('setups.fee.amount.update');
+        Route::get('/fee/amount/delete/{id}', 'Backend\Setup\FeeAmountController@delete')->name('setups.fee.amount.delete');
     });
 
 });

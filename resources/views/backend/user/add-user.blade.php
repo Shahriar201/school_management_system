@@ -110,8 +110,8 @@
 </div>
 <!-- /.content-wrapper -->
 
-<!-- Page specific script -->
-<script>
+<!-- Page specific validation script -->
+  <script>
     $(function () {
       
       $('#myForm').validate({
@@ -169,6 +169,6 @@
         }
       });
     });
-    </script>
+  </script>
 
 @endsection

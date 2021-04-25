@@ -53,7 +53,7 @@
 
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <form method="post" action="{{ route('setups.fee.amount.store') }}" id="myForm" enctype="multipart/form-data">
+                                <form method="post" action="{{ route('setups.fee.amount.update', $editData[0]->fee_category_id) }}" id="myForm" enctype="multipart/form-data">
                                 @csrf
 
                                     <div class="add_item">
@@ -64,36 +64,46 @@
                                                     <option value="">Select Fee Category</option>
 
                                                     @foreach ($fee_categories as $category)
-                                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                        <option value="{{ $category->id }}" {{ ($editData['0']->fee_category_id == $category->id)?"selected":"" }}>{{ $category->name }}</option>
                                                     @endforeach
 
                                                 </select>
                                             </div>
                                         </div>
 
-                                        <div class="form-row">
-                                            <div class="form-group col-md-5">
-                                                <label>Class</label>
-                                                <select name="class_id[]" class="form-control">
-                                                    <option value="">Select Class</option>
+                                        @foreach ($editData as $edit)
 
-                                                    @foreach ($student_classes as $class)
-                                                        <option value="{{ $class->id }}">{{ $class->name }}</option>
-                                                    @endforeach
+                                        <div class="delete_whole_extra_item_add" id="delete_whole_extra_item_add">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-5">
+                                                    <label>Class</label>
+                                                    <select name="class_id[]" class="form-control">
+                                                        <option value="">Select Class</option>
 
-                                                </select>
+                                                        @foreach ($student_classes as $class)
+                                                            <option value="{{ $class->id }}" {{ ($edit->class_id == $class->id)?"selected":"" }}>{{ $class->name }}</option>
+                                                        @endforeach
+
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group col-md-5">
+                                                    <label>Amount</label>
+                                                    <input type="text" name="amount[]" value="{{ ($edit->amount) }}" class="form-control">
+                                                </div>
+
+                                                <div class="form-group col-md-1" style="padding-top: 30px">
+                                                    <div class="form-row">
+                                                        <span class="btn btn-success addeventmore"><i class="fa fa-plus-circle"></i></span>
+                                                        <span class="btn btn-danger removeeventmore"><i class="fa fa-minus-circle"></i></span>
+                                                    </div>
+                                                </div>
+
                                             </div>
-
-                                            <div class="form-group col-md-5">
-                                                <label>Amount</label>
-                                                <input type="text" name="amount[]" class="form-control">
-                                            </div>
-
-                                            <div class="form-group col-md-1" style="padding-top: 30px">
-                                                <span class="btn btn-success addeventmore"><i class="fa fa-plus-circle"></i></span>
-                                            </div>
-
                                         </div>
+
+                                        @endforeach
+                                        
                                     </div>
 
                                     <button type="submit" class="btn btn-primary">{{ (@$editData)?'Update': 'Submit' }}</button>

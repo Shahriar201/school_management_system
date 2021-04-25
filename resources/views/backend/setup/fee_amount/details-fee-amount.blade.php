@@ -37,30 +37,30 @@
                     <!-- Custom tabs (Charts with tabs)-->
                     <div class="card">
                         <div class="card-header">
-                            <h3>Fee Amount List
-                                <a class="btn btn-success float-right btn-sm" href="{{ route('setups.fee.amount.add') }}">
-                                    <i class="fa fa-plus-circle"></i>Add Fee Amount</a>
-                                
+                            <h3>Fee Amount Details
+                                <a class="btn btn-success float-right btn-sm" href="{{ route('setups.fee.amount.view') }}">
+                                    <i class="fa fa-list"></i>Fee Amount List</a>      
                             </h3>
                         </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
 
-                            <table id="example1" class="table table-bordered table-hover">
+                        <div class="card-body">
+                            <h4><strong>Fee Type : </strong>{{ $editData['0']['fee_category']['name'] }}</h4>
+                            <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
                                         <th>SL.</th>
-                                        <th>Fee Category</th>
-                                        <th>Action</th>
+                                        <th>Class</th>
+                                        <th>Amount</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                    @foreach ($allData as $key => $value)
+                                    @foreach ($editData as $key => $value)
 
-                                    <tr class="{{ $value->id }}">
+                                    <tr>
                                         <td>{{ $key+1 }}</td>
-                                        <td>{{ $value['fee_category']['name'] }}</td>
+                                        <td>{{ $value['student_class']['name'] }}</td>
+                                        <td>{{ $value->amount }}</td>
 
                                         <td>
                                             <a title="Details" id="details" class="btn btn-sm btn-success" href="{{ route('setups.fee.amount.details', $value->fee_category_id)}}">
@@ -84,6 +84,9 @@
                                     
                                 </tbody>
                             </table>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
                             
                         </div>
                         <!-- /.card-body -->

@@ -102,6 +102,14 @@ Route::group(['middleware'=>'auth'], function(){
         Route::get('/exam/type/edit/{id}', 'Backend\Setup\ExamTypeController@edit')->name('setups.exam.type.edit');
         Route::post('/exam/type/update/{id}', 'Backend\Setup\ExamTypeController@update')->name('setups.exam.type.update');
         Route::get('/exam/type/delete/{id}', 'Backend\Setup\ExamTypeController@delete')->name('setups.exam.type.delete');
+       
+        //Subjects
+        Route::get('/subject/view', 'Backend\Setup\SubjectController@view')->name('setups.subject.view');
+        Route::get('/subject/add', 'Backend\Setup\SubjectController@add')->name('setups.subject.add');
+        Route::post('/subject/store', 'Backend\Setup\SubjectController@store')->name('setups.subject.store');  
+        Route::get('/subject/edit/{id}', 'Backend\Setup\SubjectController@edit')->name('setups.subject.edit');
+        Route::post('/subject/update/{id}', 'Backend\Setup\SubjectController@update')->name('setups.subject.update');
+        Route::get('/subject/delete/{id}', 'Backend\Setup\SubjectController@delete')->name('setups.subject.delete');
     });
 
 });

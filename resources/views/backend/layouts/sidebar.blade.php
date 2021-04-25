@@ -115,6 +115,14 @@
                         <p>Fee Category Amount</p>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('setups.exam.type.view') }}" class="nav-link 
+                    {{ ($route=='setups.exam.type.view')?'active':'' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Exam Type</p>
+                    </a>
+                </li>
             </ul>
 
         </li>

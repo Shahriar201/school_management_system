@@ -9,13 +9,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Manage Fee Category Amount</h1>
+                    <h1 class="m-0">Manage Assign Subject</h1>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Amount</li>
+                        <li class="breadcrumb-item active">Assign Subject</li>
                     </ol>
                 </div>
                 <!-- /.col -->
@@ -37,20 +37,22 @@
                     <!-- Custom tabs (Charts with tabs)-->
                     <div class="card">
                         <div class="card-header">
-                            <h3>Fee Amount Details
-                                <a class="btn btn-success float-right btn-sm" href="{{ route('setups.fee.amount.view') }}">
-                                    <i class="fa fa-list"></i>Fee Amount List</a>      
+                            <h3>Assign Subject Details
+                                <a class="btn btn-success float-right btn-sm" href="{{ route('setups.assign.subject.view') }}">
+                                    <i class="fa fa-list"></i>Assign Subject List</a>      
                             </h3>
                         </div>
 
                         <div class="card-body">
-                            <h4><strong>Fee Type : </strong>{{ $editData['0']['fee_category']['name'] }}</h4>
+                            <h4><strong>Class Name : </strong>{{ $editData['0']['student_class']['name'] }}</h4>
                             <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
                                         <th>SL.</th>
-                                        <th>Class</th>
-                                        <th>Amount</th>
+                                        <th>Subject</th>
+                                        <th>Full Mark</th>
+                                        <th>Pass Mark</th>
+                                        <th>Subjective Mark</th>
                                     </tr>
                                 </thead>
 
@@ -59,26 +61,11 @@
 
                                     <tr>
                                         <td>{{ $key+1 }}</td>
-                                        <td>{{ $value['student_class']['name'] }}</td>
-                                        <td>{{ $value->amount }}</td>
+                                        <td>{{ $value['subject']['name'] }}</td>
+                                        <td>{{ $value->full_mark }}</td>
+                                        <td>{{ $value->pass_mark }}</td>
+                                        <td>{{ $value->subjective_mark }}</td>
 
-                                        {{-- View and Edit button --}}
-                                        {{-- <td>
-                                            <a title="Details" id="details" class="btn btn-sm btn-success" href="{{ route('setups.fee.amount.details', $value->fee_category_id)}}">
-                                                <i class="fa fa-eye"></i>
-                                            </a>
-
-                                            <a title="Edit" id="edit" class="btn btn-sm btn-primary" href="{{ route('setups.fee.amount.edit', $value->fee_category_id)}}">
-                                                <i class="fa fa-edit"></i>
-                                            </a>
-                                            
-                                            <a title="Delete" id="delete" class="btn btn-sm btn-danger" href="
-                                            {{ route('setups.fee.amount.delete', $value->fee_category_id) }}">
-                                                <i class="fa fa-trash">
-
-                                                </i>
-                                            </a>
-                                        </td> --}}
                                     </tr>
                                         
                                     @endforeach

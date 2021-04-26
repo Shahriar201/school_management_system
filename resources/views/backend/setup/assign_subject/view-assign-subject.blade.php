@@ -60,7 +60,7 @@
 
                                     <tr class="{{ $value->id }}">
                                         <td>{{ $key+1 }}</td>
-                                        <td>{{ $value->class_id }}</td>
+                                        <td>{{ $value['student_class']['name'] }}</td>
 
                                         <td>
                                             <a title="Details" id="details" class="btn btn-sm btn-success" href="{{ route('setups.assign.subject.details', $value->class_id)}}">

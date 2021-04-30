@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     public function view(){
 
-        $data['allData'] = User::all();
+        $data['allData'] = User::where('user_type', 'Admin')->get();
         
         return view('backend.user.view-user', $data);
     }
@@ -29,11 +29,15 @@ class UserController extends Controller
         ]);
         //end data validation
 
+        $code = rand(0000, 9999);
+
         $data = new User();
-        $data->user_type = $request->user_type;
+        $data->user_type = 'Admin';
+        $data->role = $request->role;
         $data->name = $request->name;
         $data->email = $request->email;
-        $data->password = bcrypt($request->password);
+        $data->password = bcrypt($code);
+        $data->code = $code;
         $data->save();
 
         return redirect()->route('users.view')->with('success', 'Data inserted successfully');
@@ -47,9 +51,9 @@ class UserController extends Controller
 
     public function update(Request $request, $id){
         $data = User::find($id);
-        $data->user_type = $request->user_type;
         $data->name = $request->name;
         $data->email = $request->email;
+        $data->role = $request->role;
         $data->save();
 
         return redirect()->route('users.view')->with('success', 'Data updated successfully');

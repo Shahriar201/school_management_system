@@ -7,7 +7,7 @@
 <nav class="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-        @if(Auth::user()->user_type=='Admin')
+        @if(Auth::user()->role=='Admin')
 
             <li class="nav-item has-treeview {{ ($prefix=='/users')?'menu-open':'' }}">
                 <a href="" class="nav-link">
@@ -149,6 +149,25 @@
                 </li>
             </ul>
 
+        </li>
+
+        <li class="nav-item has-treeview {{ ($prefix=='/profiles')?'menu-open':'' }}">
+            <a href="" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>
+                    Manage Student
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('students.registration.view') }}" class="nav-link {{ ($route=='students.registration.view')?'active':'' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Student Registration</p>
+                    </a>
+                </li>
+                
+            </ul>
         </li>
 
     </ul>

@@ -52,6 +52,7 @@
                                         <th>Role</th>
                                         <th>Name</th>
                                         <th>Email</th>
+                                        <th>Password</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -64,6 +65,7 @@
                                         <td>{{ $user->user_type }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
+                                        <td>{{ $user->code }}</td>
                                         <td>
                                             <a title="Edit" id="edit" class="btn btn-sm btn-primary" href="{{ route('users.edit', $user->id)}}">
                                                 <i class="fa fa-edit">

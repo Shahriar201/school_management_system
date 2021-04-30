@@ -129,5 +129,16 @@ Route::group(['middleware'=>'auth'], function(){
         Route::get('/designation/delete/{id}', 'Backend\Setup\DesignationController@delete')->name('setups.designation.delete');
     });
 
+    Route::prefix('students')->group(function(){
+
+        Route::get('/reg/view', 'Backend\Student\StudentRegController@view')->name('students.registration.view');
+        Route::get('/reg/add', 'Backend\Student\StudentRegController@add')->name('students.registration.add');
+        Route::post('/reg/store', 'Backend\Student\StudentRegController@store')->name('students.registration.store');  
+        Route::get('/reg/edit/{id}', 'Backend\Student\StudentRegController@edit')->name('students.registration.edit');
+        Route::post('/reg/update/{id}', 'Backend\Student\StudentRegController@update')->name('students.registration.update');
+        Route::get('/reg/delete/{id}', 'Backend\Student\StudentRegController@delete')->name('students.registration.delete');
+        
+    });
+
 });
 

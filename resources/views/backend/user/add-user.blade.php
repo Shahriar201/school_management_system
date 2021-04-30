@@ -51,11 +51,11 @@
 
                             <div class="form-row">
                                 <div class="form-group col-md-4">
-                                    <label for="user_type">User Role</label>
-                                        <select name="user_type" id="user_type" class="form-control">
+                                    <label for="role">User Role</label>
+                                        <select name="role" id="role" class="form-control">
                                             <option value="">Select Role</option>
                                             <option value="Admin">Admin</option>
-                                            <option value="User">User</option>
+                                            <option value="Operator">Operator</option>
                                         </select>
                                </div>  
 
@@ -75,7 +75,7 @@
                                     </font>
                                 </div>
 
-                                <div class="form-group col-md-4">
+                                {{-- <div class="form-group col-md-4">
                                     <label for="password">Password</label>
                                     <input type="password" name="password" id="password" class="form-control">
                                 </div>
@@ -83,7 +83,7 @@
                                 <div class="form-group col-md-4">
                                     <label for="password">Confirm Password</label>
                                     <input type="password" name="password2" class="form-control">
-                                </div>
+                                </div> --}}
 
                                 <div class="form-group col-md-6">
                                     <input type="submit" value="submit" class="btn btn-primary">
@@ -119,7 +119,7 @@
           name: {
             required: true,
           },
-          user_type: {
+          role: {
             required: true,
           },
           email: {
@@ -139,7 +139,7 @@
           name: {
             required: "Please enter username"
           },
-          user_type: {
+          role: {
             required: "Please select user type"
           },
           email: {

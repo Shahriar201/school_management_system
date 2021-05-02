@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     public function view(){
 
-        $data['allData'] = User::where('user_type', 'Admin')->get();
+        $data['allData'] = User::where('user_type', 'admin')->get();
         
         return view('backend.user.view-user', $data);
     }
@@ -32,7 +32,7 @@ class UserController extends Controller
         $code = rand(0000, 9999);
 
         $data = new User();
-        $data->user_type = 'Admin';
+        $data->user_type = 'admin';
         $data->role = $request->role;
         $data->name = $request->name;
         $data->email = $request->email;

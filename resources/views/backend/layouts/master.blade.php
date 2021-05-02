@@ -32,6 +32,10 @@
     <link rel="stylesheet" href="{{ asset('public/backend') }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="{{ asset('public/backend') }}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <link rel="stylesheet" href="{{ asset('public/backend') }}/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
+    
+    {{-- Datepicker --}}
+    <link rel="stylesheet" href="{{ asset('public/backend') }}/datepicker/daterangepicker.css">
+
 
     <!-- jQuery -->
     <script src="{{asset ('public/backend/plugins/jquery/jquery.min.js')}}"></script>
@@ -41,9 +45,13 @@
     {{-- sweet alert --}}
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-    {{-- Date Picker --}}
+    {{-- Datepicker --}}
     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
+    {{-- Datepicker --}}
+    <script src="{{asset ('public/backend')}}/datepicker/moment.min.js"></script>
+    <script src="{{asset ('public/backend')}}/datepicker/daterangepicker.js"></script>
     
 
 </head>
@@ -297,6 +305,37 @@
                 
             });
         });
+    </script>
+
+    <script type="text/javascript">
+        $(function(){
+            $('.singledatepicker').daterangepicker({
+                singleDatePicker: true;
+                showDropdowns: true,
+                autoUpdateInput: false,
+                autoApply: true,
+                locale: {
+                    format: 'DD-MM-YYYY',
+                    daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+                    firstDay: 0
+                },
+                minDate: '01/01/1930',
+            },
+            function(start){
+                this.element.val(start.format('DD-MM-YYYY'));
+                this.element.parent().parent().removeClass('has-error');
+            },
+            function(chosen_date){
+                this.element.val(chosen_date.format('DD-MM-YYYY'));
+                
+            }
+            );
+            $('.singledatepicker').on('apply.daterangepicker', function(ev, picker){
+                $(this).val(picker.startDate.format('DD-MM-YYYY'));
+                $(this).trigger('change');
+            });
+        });
+
     </script>
 
 </body>

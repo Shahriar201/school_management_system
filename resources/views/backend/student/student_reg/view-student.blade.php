@@ -9,13 +9,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Manage User</h1>
+                    <h1 class="m-0">Manage Students</h1>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">User</li>
+                        <li class="breadcrumb-item active">Student</li>
                     </ol>
                 </div>
                 <!-- /.col -->
@@ -37,9 +37,10 @@
                     <!-- Custom tabs (Charts with tabs)-->
                     <div class="card">
                         <div class="card-header">
-                            <h3>User List
-                                <a class="btn btn-success float-right btn-sm" href="{{ route('users.add') }}">
-                                    <i class="fa fa-plus-circle"></i>Add User</a>
+                            <h3>Student List
+                                <a class="btn btn-success float-right btn-sm" href="{{ route('students.registration.add') }}">
+                                    <i class="fa fa-plus-circle"></i>Add Student</a>
+                                
                             </h3>
                         </div>
                         <!-- /.card-header -->
@@ -49,30 +50,29 @@
                                 <thead>
                                     <tr>
                                         <th>SL.</th>
-                                        <th>Role</th>
                                         <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Code</th>
+                                        <th>ID No</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                    @foreach ($allData as $key => $user)
+                                    @foreach ($allData as $key => $value)
 
                                     <tr>
                                         <td>{{ $key+1 }}</td>
-                                        <td>{{ $user->user_type }}</td>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>{{ $user->code }}</td>
+                                        <td>{{ $value->class_id }}</td>
+                                        <td>{{ $value->year_id }}</td>
+                                        {{-- <td>{{ $value->year_id }}</td> --}}
+
                                         <td>
-                                            <a title="Edit" id="edit" class="btn btn-sm btn-primary" href="{{ route('users.edit', $user->id)}}">
+                                            <a title="Edit" id="edit" class="btn btn-sm btn-primary" href="{{ route('students.registration.edit', $value->id)}}">
                                                 <i class="fa fa-edit">
 
                                                 </i>
                                             </a>
-                                            <a title="Delete" id="delete" class="btn btn-sm btn-danger" href="{{ route('users.delete', $user->id) }}">
+                                            <a title="Delete" id="delete" class="btn btn-sm btn-danger" href="
+                                            {{ route('setups.student.year.delete', $value->id) }}">
                                                 <i class="fa fa-trash">
 
                                                 </i>

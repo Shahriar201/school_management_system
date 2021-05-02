@@ -151,7 +151,7 @@
 
         </li>
 
-        <li class="nav-item has-treeview {{ ($prefix=='/profiles')?'menu-open':'' }}">
+        <li class="nav-item has-treeview {{ ($prefix=='/students')?'menu-open':'' }}">
             <a href="" class="nav-link">
                 <i class="nav-icon fas fa-copy"></i>
                 <p>

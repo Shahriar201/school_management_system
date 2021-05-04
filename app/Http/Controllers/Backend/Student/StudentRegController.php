@@ -16,14 +16,18 @@ use DB;
 
 class StudentRegController extends Controller
 {
-    public function view(){     
-        $data['allData'] = AssignStudent::all();
+    public function view(){  
+        $data['years'] = Year::orderBy('id','desc')->get();
+        $data['classes'] = StudentClass::all();   
+        $data['year_id'] = Year::orderBy('id','desc')->first()->id;
+        $data['class_id'] = StudentClass::orderBy('id','asc')->first()->id;
+        $data['allData'] = AssignStudent::where('year_id', $data['year_id'])->where('class_id', $data['class_id'])->get();
         
         return view('backend.student.student_reg.view-student', $data);
     }
 
     public function add(){
-        $data['years'] = Year::all();
+        $data['years'] = Year::orderBy('id', 'desc')->get();
         $data['classes'] = StudentClass::all();
         $data['groups'] = StudentGroup::all();
         $data['shifts'] = StudentShift::all();
@@ -63,6 +67,7 @@ class StudentRegController extends Controller
             $user->id_no = $final_id_no;
             $user->password = bcrypt($code);
             $user->code = $code;
+            $user->user_type = 'student';
             $user->name = $request->name;
             $user->fname = $request->fname;
             $user->mname = $request->mname;
@@ -89,11 +94,12 @@ class StudentRegController extends Controller
 
             $discount_student = new DiscountStudent();
             $discount_student->assign_student_id = $assign_student->id;
+            $discount_student->fee_category_id = '1';
             $discount_student->discount = $request->discount;
             $discount_student->save();
         });
         
-        return redirect()->route('students.registration.view')->with('success', 'Slider inserted successfully');
+        return redirect()->route('students.registration.view')->with('success', 'Data inserted successfully');
     }
 
     public function edit($id){

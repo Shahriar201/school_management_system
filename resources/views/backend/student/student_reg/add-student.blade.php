@@ -9,7 +9,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Manage Student</h1>
+                    <h1 class="m-0">Manage Students</h1>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-6">
@@ -58,8 +58,7 @@
                         <form method="post" action="{{ (@$editData)?route('students.registration.update', $editData->id): route('students.registration.store') }}" id="myForm" enctype="multipart/form-data">
                             @csrf
 
-                            <div class="form-row">
-                               
+                            <div class="form-row">                               
                                 <div class="form-group col-md-4">
                                     <label>Student Name <font style="color: red">*</font></label>
                                     <input type="text" name="name" value="{{ @$editData->name }}" class="form-control form-control-sm">

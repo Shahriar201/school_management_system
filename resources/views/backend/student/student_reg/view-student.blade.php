@@ -45,14 +45,46 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
+                            <form method="GET" id="myForm">
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label>Year <font style="color: red">*</font></label>
+                                        <select name="year_id" class="form-control form-control-sm">
+                                            <option value="">Select Year</option>
+                                            @foreach ($years as $year)
+                                                <option value="{{ $year->id }}">{{ $year->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group col-md-4">
+                                        <label>Class <font style="color: red">*</font></label>
+                                        <select name="class_id" class="form-control form-control-sm">
+                                            <option value="">Select Class</option>
+                                            @foreach ($classes as $class)
+                                                <option value="{{ $class->id }}">{{ $class->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4" style="padding-top: 29px">
+                                        <button type="submit" class="btn btn-primary btn-sm" name="search">Search</button>
+                                    </div>
+                                </div>
+                            </form>
 
+                        </div>
+                        <div class="card-body">
                             <table id="example1" class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
-                                        <th>SL.</th>
+                                        <th width="7%">SL.</th>
                                         <th>Name</th>
                                         <th>ID No</th>
-                                        <th>Action</th>
+                                        <th>Roll</th>
+                                        <th>Year</th>
+                                        <th>Class</th>
+                                        <th>Image</th>
+                                        <th width="12%">Action</th>
                                     </tr>
                                 </thead>
 
@@ -61,9 +93,12 @@
 
                                     <tr>
                                         <td>{{ $key+1 }}</td>
-                                        <td>{{ $value->class_id }}</td>
+                                        <td>{{ $value['student']['name'] }}</td>
                                         <td>{{ $value->year_id }}</td>
-                                        {{-- <td>{{ $value->year_id }}</td> --}}
+                                        <td>{{ $value->year_id }}</td>
+                                        <td>{{ $value->year_id }}</td>
+                                        <td>{{ $value->year_id }}</td>
+                                        <td>{{ $value->year_id }}</td>
 
                                         <td>
                                             <a title="Edit" id="edit" class="btn btn-sm btn-primary" href="{{ route('students.registration.edit', $value->id)}}">
@@ -72,7 +107,7 @@
                                                 </i>
                                             </a>
                                             <a title="Delete" id="delete" class="btn btn-sm btn-danger" href="
-                                            {{ route('setups.student.year.delete', $value->id) }}">
+                                            {{ route('students.registration.delete', $value->id) }}">
                                                 <i class="fa fa-trash">
 
                                                 </i>

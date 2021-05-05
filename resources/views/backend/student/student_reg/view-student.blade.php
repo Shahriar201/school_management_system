@@ -112,13 +112,13 @@
                                         @endif
 
                                         <td>
-                                            <a title="Edit" id="edit" class="btn btn-sm btn-primary" href="{{ route('students.registration.edit', $value->id)}}">
+                                            <a title="Edit" id="edit" class="btn btn-sm btn-primary" href="{{ route('students.registration.edit', $value->student_id)}}">
                                                 <i class="fa fa-edit">
 
                                                 </i>
                                             </a>
                                             <a title="Delete" id="delete" class="btn btn-sm btn-danger" href="
-                                            {{ route('students.registration.delete', $value->id) }}">
+                                            {{ route('students.registration.delete', $value->student_id) }}">
                                                 <i class="fa fa-trash">
 
                                                 </i>
@@ -168,7 +168,7 @@
                                         @endif
 
                                         <td>
-                                            <a title="Edit" id="edit" class="btn btn-sm btn-primary" href="{{ route('students.registration.edit', $value->id)}}">
+                                            <a title="Edit" id="edit" class="btn btn-sm btn-primary" href="{{ route('students.registration.edit', $value->student_id)}}">
                                                 <i class="fa fa-edit">
 
                                                 </i>

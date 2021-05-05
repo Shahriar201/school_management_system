@@ -55,41 +55,42 @@
                         <div class="card-body">
 
                         {{-- User add form --}}
-                        <form method="post" action="{{ (@$editData)?route('students.registration.update', $editData->id): route('students.registration.store') }}" id="myForm" enctype="multipart/form-data">
+                        <form method="post" action="{{ (@$editData)?route('students.registration.update', $editData->student_id): route('students.registration.store') }}" id="myForm" enctype="multipart/form-data">
                             @csrf
+                            <input type="hidden" name="id" value="{{ @$editData->id }}">
 
                             <div class="form-row">                               
                                 <div class="form-group col-md-4">
                                     <label>Student Name <font style="color: red">*</font></label>
-                                    <input type="text" name="name" value="{{ @$editData->name }}" class="form-control form-control-sm">
+                                    <input type="text" name="name" value="{{ @$editData['student']['name'] }}" class="form-control form-control-sm">
                                 </div>
 
                                 <div class="form-group col-md-4">
                                     <label>Father's Name <font style="color: red">*</font></label>
-                                    <input type="text" name="fname" value="{{ @$editData->fname }}" class="form-control form-control-sm">
+                                    <input type="text" name="fname" value="{{ @$editData['student']['fname'] }}" class="form-control form-control-sm">
                                 </div>
                                 
                                 <div class="form-group col-md-4">
                                     <label>Mother's Name <font style="color: red">*</font></label>
-                                    <input type="text" name="mname" value="{{ @$editData->mname }}" class="form-control form-control-sm">
+                                    <input type="text" name="mname" value="{{ @$editData['student']['mname'] }}" class="form-control form-control-sm">
                                 </div>
 
                                 <div class="form-group col-md-4">
                                     <label>Mobile Number <font style="color: red">*</font></label>
-                                    <input type="text" name="mobile" value="{{ @$editData->mobile }}" class="form-control form-control-sm">
+                                    <input type="text" name="mobile" value="{{ @$editData['student']['mobile'] }}" class="form-control form-control-sm">
                                 </div>
 
                                 <div class="form-group col-md-4">
                                     <label>Address <font style="color: red">*</font></label>
-                                    <input type="text" name="address" value="{{ @$editData->address }}" class="form-control form-control-sm">
+                                    <input type="text" name="address" value="{{ @$editData['student']['address'] }}" class="form-control form-control-sm">
                                 </div>
 
                                 <div class="form-group col-md-4">
                                     <label>Gender <font style="color: red">*</font></label>
                                     <select name="gender" class="form-control form-control-sm">
                                         <option value="">Select Gender</option>
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
+                                        <option value="Male"{{ (@$editData['student']['gender']=='Male')?'selected': '' }}>Male</option>
+                                        <option value="Female" {{ (@$editData['student']['gender']=='Female')?'selected': '' }}>Female</option>
                                         <option value="Others">Others</option>
                                     </select>
                                 </div>
@@ -98,20 +99,20 @@
                                     <label>Religion <font style="color: red">*</font></label>
                                     <select name="religion" class="form-control form-control-sm">
                                         <option value="">Select Religion</option>
-                                        <option value="Islam">Islam</option>
-                                        <option value="Hindu">Hindu</option>
-                                        <option value="Khristan">Khristan</option>
+                                        <option value="Islam" {{ (@$editData['student']['religion']=='Islam')?'selected': '' }}>Islam</option>
+                                        <option value="Hindu" {{ (@$editData['student']['religion']=='Hindu')?'selected': '' }}>Hindu</option>
+                                        <option value="Khristan" {{ (@$editData['student']['religion']=='Khristan')?'selected': '' }}>Khristan</option>
                                     </select>
                                 </div>
 
                                 <div class="form-group col-md-4">
                                     <label>Date of Birth <font style="color: red">*</font></label>
-                                    <input type="date" name="dob" value="{{ @$editData->dob }}" class="form-control form-control-sm singledatepicker" autocomplete="off">
+                                    <input type="date" name="dob" value="{{ @$editData['student']['dob'] }}" class="form-control form-control-sm singledatepicker" autocomplete="off">
                                 </div>
                                 
                                 <div class="form-group col-md-4">
                                     <label>Discount <font style="color: red">*</font></label>
-                                    <input type="text" name="discount" value="{{ @$editData->discount }}" class="form-control form-control-sm" autocomplete="off">
+                                    <input type="text" name="discount" value="{{ @$editData['discount']['discount'] }}" class="form-control form-control-sm" autocomplete="off">
                                 </div>
 
                                 <div class="form-group col-md-4">
@@ -119,7 +120,7 @@
                                     <select name="year_id" class="form-control form-control-sm">
                                         <option value="">Select Year</option>
                                         @foreach ($years as $year)
-                                            <option value="{{ $year->id }}">{{ $year->name }}</option>
+                                            <option value="{{ $year->id }}" {{ (@$editData->year_id==$year->id)? 'selected': '' }} >{{ $year->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -129,7 +130,7 @@
                                     <select name="class_id" class="form-control form-control-sm">
                                         <option value="">Select Class</option>
                                         @foreach ($classes as $class)
-                                            <option value="{{ $class->id }}">{{ $class->name }}</option>
+                                            <option value="{{ $class->id }}" {{ (@$editData->class_id==$class->id)? 'selected': '' }} >{{ $class->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -139,7 +140,7 @@
                                     <select name="group_id" class="form-control form-control-sm">
                                         <option value="">Select Group</option>
                                         @foreach ($groups as $group)
-                                            <option value="{{ $group->id }}">{{ $group->name }}</option>
+                                            <option value="{{ $group->id }}" {{ (@$editData->group_id==$group->id)? 'selected': '' }}>{{ $group->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -149,7 +150,7 @@
                                     <select name="shift_id" class="form-control form-control-sm">
                                         <option value="">Select Shift</option>
                                         @foreach ($shifts as $shift)
-                                            <option value="{{ $shift->id }}">{{ $shift->name }}</option>
+                                            <option value="{{ $shift->id }}" {{ (@$editData->shift_id==$shift->id)? 'selected': '' }}>{{ $shift->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -160,7 +161,7 @@
                                 </div>
                                 
                                 <div class="form-group col-md-4">
-                                    <img id="showImage" src="{{ url('public/upload/no_image.jpg') }}"
+                                    <img id="showImage" src="{{ (!empty($editData['student']['image']))?url('public/upload/student_images/'.$editData['student']['image']):url('public/upload/no_image.jpg') }}"
                                      style="width: 100px; height: 110px; border: 1px solid #000;">
                                 
                                 </div>

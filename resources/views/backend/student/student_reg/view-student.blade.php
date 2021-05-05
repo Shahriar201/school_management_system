@@ -117,12 +117,17 @@
 
                                                 </i>
                                             </a>
-                                            <a title="Delete" id="delete" class="btn btn-sm btn-danger" href="
+                                            <a title="Promotion" id="promotion" class="btn btn-sm btn-success" href="{{ route('students.registration.promotion', $value->student_id)}}">
+                                                <i class="fa fa-check">
+
+                                                </i>
+                                            </a>
+                                            {{-- <a title="Delete" id="delete" class="btn btn-sm btn-danger" href="
                                             {{ route('students.registration.delete', $value->student_id) }}">
                                                 <i class="fa fa-trash">
 
                                                 </i>
-                                            </a>
+                                            </a> --}}
                                         </td>
                                     </tr>
                                         
@@ -173,12 +178,17 @@
 
                                                 </i>
                                             </a>
-                                            <a title="Delete" id="delete" class="btn btn-sm btn-danger" href="
+                                            <a title="Promotion" id="promotion" class="btn btn-sm btn-success" href="{{ route('students.registration.promotion', $value->student_id)}}">
+                                                <i class="fa fa-check">
+
+                                                </i>
+                                            </a>
+                                            {{-- <a title="Delete" id="delete" class="btn btn-sm btn-danger" href="
                                             {{ route('students.registration.delete', $value->id) }}">
                                                 <i class="fa fa-trash">
 
                                                 </i>
-                                            </a>
+                                            </a> --}}
                                         </td>
                                     </tr>
                                         

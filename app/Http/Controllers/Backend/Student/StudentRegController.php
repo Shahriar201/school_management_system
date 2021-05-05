@@ -26,6 +26,16 @@ class StudentRegController extends Controller
         return view('backend.student.student_reg.view-student', $data);
     }
 
+    public function yearClassWise(Request $request){
+        $data['years'] = Year::orderBy('id','desc')->get();
+        $data['classes'] = StudentClass::all();   
+        $data['year_id'] = $request->year_id;
+        $data['class_id'] = $request->class_id;
+        $data['allData'] = AssignStudent::where('year_id', $request->year_id)->where('class_id', $request->class_id)->get();
+        
+        return view('backend.student.student_reg.view-student', $data);
+    }
+
     public function add(){
         $data['years'] = Year::orderBy('id', 'desc')->get();
         $data['classes'] = StudentClass::all();

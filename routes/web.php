@@ -137,6 +137,7 @@ Route::group(['middleware'=>'auth'], function(){
         Route::get('/reg/edit/{id}', 'Backend\Student\StudentRegController@edit')->name('students.registration.edit');
         Route::post('/reg/update/{id}', 'Backend\Student\StudentRegController@update')->name('students.registration.update');
         Route::get('/reg/delete/{id}', 'Backend\Student\StudentRegController@delete')->name('students.registration.delete');
+        Route::get('/year-class-wise', 'Backend\Student\StudentRegController@yearClassWise')->name('students.year.class.wise');
         
     });
 

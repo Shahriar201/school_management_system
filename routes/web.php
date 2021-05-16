@@ -140,6 +140,7 @@ Route::group(['middleware'=>'auth'], function(){
         Route::get('/year-class-wise', 'Backend\Student\StudentRegController@yearClassWise')->name('students.year.class.wise');
         Route::get('/reg/promotion/{student_id}', 'Backend\Student\StudentRegController@promotion')->name('students.registration.promotion');
         Route::post('/reg/promotion/{student_id}', 'Backend\Student\StudentRegController@promotionStore')->name('students.registration.promotion.store');
+        Route::get('/reg/details/{student_id}', 'Backend\Student\StudentRegController@details')->name('students.registration.details');
         
     });
 

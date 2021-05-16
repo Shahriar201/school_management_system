@@ -88,7 +88,7 @@
                                         @if (Auth::user()->role=="Admin")
                                         <th>Code</th>
                                         @endif
-                                        <th width="12%">Action</th>
+                                        <th width="14%">Action</th>
                                     </tr>
                                 </thead>
 
@@ -119,6 +119,11 @@
                                             </a>
                                             <a title="Promotion" id="promotion" class="btn btn-sm btn-success" href="{{ route('students.registration.promotion', $value->student_id)}}">
                                                 <i class="fa fa-check">
+
+                                                </i>
+                                            </a>
+                                            <a target="_blank" title="Details" id="details" class="btn btn-sm btn-info" href="{{ route('students.registration.details', $value->student_id)}}">
+                                                <i class="fa fa-eye">
 
                                                 </i>
                                             </a>
@@ -149,7 +154,7 @@
                                         @if (Auth::user()->role=="Admin")
                                         <th>Code</th>
                                         @endif
-                                        <th width="12%">Action</th>
+                                        <th width="14%">Action</th>
                                     </tr>
                                 </thead>
 
@@ -180,6 +185,11 @@
                                             </a>
                                             <a title="Promotion" id="promotion" class="btn btn-sm btn-success" href="{{ route('students.registration.promotion', $value->student_id)}}">
                                                 <i class="fa fa-check">
+
+                                                </i>
+                                            </a>
+                                            <a target="_blank" title="Details" id="details" class="btn btn-sm btn-info" href="{{ route('students.registration.details', $value->student_id)}}">
+                                                <i class="fa fa-eye">
 
                                                 </i>
                                             </a>

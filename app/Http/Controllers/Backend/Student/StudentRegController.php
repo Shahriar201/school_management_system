@@ -13,6 +13,7 @@ use App\Model\StudentShift;
 use App\Model\AssignStudent;
 use App\Model\Year;
 use DB;
+use PDF;
 
 class StudentRegController extends Controller
 {
@@ -208,4 +209,13 @@ class StudentRegController extends Controller
         return redirect()->route('students.registration.view')->with('success', 'Student Promotion successfully');
 
     }
+
+    public function details($student_id){
+        $data['details'] = AssignStudent::with(['student', 'discount'])->where('student_id', $student_id)->first();
+        $pdf = PDF::loadView('backend.student.student_reg.student-details-pdf', $data);
+        $pdf->SetProtection(['copy', 'print'], '', 'pass');
+        return $pdf->stream('document.pdf');
+    }
+    
+    
 }

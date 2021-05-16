@@ -130,7 +130,7 @@ Route::group(['middleware'=>'auth'], function(){
     });
 
     Route::prefix('students')->group(function(){
-
+        //Student Registration
         Route::get('/reg/view', 'Backend\Student\StudentRegController@view')->name('students.registration.view');
         Route::get('/reg/add', 'Backend\Student\StudentRegController@add')->name('students.registration.add');
         Route::post('/reg/store', 'Backend\Student\StudentRegController@store')->name('students.registration.store');  
@@ -142,6 +142,10 @@ Route::group(['middleware'=>'auth'], function(){
         Route::post('/reg/promotion/{student_id}', 'Backend\Student\StudentRegController@promotionStore')->name('students.registration.promotion.store');
         Route::get('/reg/details/{student_id}', 'Backend\Student\StudentRegController@details')->name('students.registration.details');
         
+        //Student Roll Generate
+        Route::get('/roll/view', 'Backend\Student\StudentRollController@view')->name('students.roll.view'); 
+        Route::get('/roll/get-student', 'Backend\Student\StudentRollController@getStudent')->name('students.roll.get-student'); 
+        Route::post('/roll/store', 'Backend\Student\StudentRollController@view')->name('students.roll.store'); 
     });
 
 });

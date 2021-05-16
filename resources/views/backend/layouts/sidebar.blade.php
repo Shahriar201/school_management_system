@@ -168,6 +168,15 @@
                 </li>
                 
             </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('students.roll.view') }}" class="nav-link {{ ($route=='students.roll.view')?'active':'' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Roll Generate</p>
+                    </a>
+                </li>
+                
+            </ul>
         </li>
 
     </ul>

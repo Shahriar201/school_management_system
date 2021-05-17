@@ -85,7 +85,7 @@
                                         <th>Year</th>
                                         <th>Class</th>
                                         <th>Image</th>
-                                        @if (Auth::user()->role=="Admin")
+                                        @if (Auth::user()->role=="admin")
                                         <th>Code</th>
                                         @endif
                                         <th width="14%">Action</th>
@@ -107,7 +107,7 @@
                                             style="width: 70px; height: 80px; border: 1px solid #000;">
                                         </td>
 
-                                        @if (Auth::user()->role=="Admin")
+                                        @if (Auth::user()->role=="admin")
                                             <td>{{ $value['student']['code'] }}</td>
                                         @endif
 

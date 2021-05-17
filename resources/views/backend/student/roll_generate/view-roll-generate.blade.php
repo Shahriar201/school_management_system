@@ -106,6 +106,7 @@
 </div>
 <!-- /.content-wrapper -->
 
+{{-- Automatic table data generate by ajax --}}
 <script type="text/javascript">
     $(document).on('click', '#search',function(){
         var year_id = $('#year_id').val();
@@ -130,14 +131,14 @@
                 $.each( data, function( key, v ) {
                     html +=
                     '<tr>'+
-                        '<td>'+v.student.id_no+'<input type="hidden" name="student_id[]" value="'+v.student_id+'"></td>'+
+                        '<td>'+v.student.id_no+ '<input type="hidden" name="student_id[]" value="'+v.student_id+'"></td>'+
                         '<td>'+v.student.name+'</td>'+ 
                         '<td>'+v.student.fname+'</td>'+ 
                         '<td>'+v.student.gender+'</td>'+ 
                         '<td><input type="text" class="form-control form-control-sm" name="roll[]" value="'+v.roll+'"></td>'+ 
                     '</tr>';
                 });
-                html = $('$roll-generate-tr').html(html);
+                html = $('#roll-generate-tr').html(html);
             }
         });
     });
@@ -149,10 +150,7 @@
     
     $('#myForm').validate({
         rules: {
-        "year_id": {
-            required: true,
-            },
-        "class_id": {
+        "roll[]": {
             required: true,
             },
         },

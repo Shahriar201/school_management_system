@@ -29,4 +29,19 @@ class StudentRollController extends Controller
         
         return response()->json($allData);
     }
+
+    public function store(Request $request){
+        $year_id = $request->year_id;
+        $class_id = $request->class_id;
+
+        if($request->student_id != null){
+            for($i=0; $i < count($request->student_id); $i++){
+                AssignStudent::where('year_id', $year_id)->where('class_id', $class_id)->where('student_id', $request->student_id
+                [$i])->update(['roll'=> $request->roll[$i]]);
+            }
+        }else{
+            return redirect()->back()->with('error', 'Sorry! There are no student');
+        }
+        return redirect()->route('students.roll.view')->with('success', 'Successfully roll generated');
+    }
 }

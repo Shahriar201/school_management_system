@@ -123,11 +123,11 @@
         $.ajax({
             url: "{{ route('students.roll.get-student') }}",
             type: "GET",
-            data: {'year_id': year_id, 'class_id': class_id},
-            success: function(data){
-                $('$roll_generate').removeClass('d-none');
+            data: {'year_id': year_id, 'class_id':class_id},
+            success: function (data) {
+                $('#roll-generate').removeClass('d-none');
                 var html = '';
-                $.each(data, function(key, v){
+                $.each( data, function( key, v ) {
                     html +=
                     '<tr>'+
                         '<td>'+v.student.id_no+'<input type="hidden" name="student_id[]" value="'+v.student_id+'"></td>'+

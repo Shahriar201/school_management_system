@@ -145,7 +145,7 @@ Route::group(['middleware'=>'auth'], function(){
         //Student Roll Generate
         Route::get('/roll/view', 'Backend\Student\StudentRollController@view')->name('students.roll.view'); 
         Route::get('/roll/get-student', 'Backend\Student\StudentRollController@getStudent')->name('students.roll.get-student'); 
-        Route::post('/roll/store', 'Backend\Student\StudentRollController@view')->name('students.roll.store'); 
+        Route::post('/roll/store', 'Backend\Student\StudentRollController@store')->name('students.roll.store'); 
     });
 
 });

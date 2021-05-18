@@ -146,6 +146,11 @@ Route::group(['middleware'=>'auth'], function(){
         Route::get('/roll/view', 'Backend\Student\StudentRollController@view')->name('students.roll.view'); 
         Route::get('/roll/get-student', 'Backend\Student\StudentRollController@getStudent')->name('students.roll.get-student'); 
         Route::post('/roll/store', 'Backend\Student\StudentRollController@store')->name('students.roll.store'); 
+
+        //Student Registration Fee
+        Route::get('/reg/fee/view', 'Backend\Student\RegistrationFeeController@view')->name('students.reg.fee.view');
+        Route::get('/reg/get-student', 'Backend\Student\RegistrationFeeController@getStudent')->name('students.reg.fee.get-student');
+        Route::get('/reg/fee/payslip', 'Backend\Student\RegistrationFeeController@payslip')->name('students.reg.fee.payslip');
     });
 
 });

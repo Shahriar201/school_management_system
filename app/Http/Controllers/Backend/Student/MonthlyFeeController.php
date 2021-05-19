@@ -16,13 +16,13 @@ use App\Model\FeeCategoryAmount;
 use DB;
 use PDF;
 
-class RegistrationFeeController extends Controller
+class MonthlyFeeController extends Controller
 {
     public function view(){  
         $data['years'] = Year::orderBy('id','desc')->get();
         $data['classes'] = StudentClass::all();
         
-        return view('backend.student.registration_fee.view-registration-fee', $data);
+        return view('backend.student.monthly_fee.view-monthly-fee', $data);
     }
 
     public function getStudent(Request $request){
@@ -41,13 +41,13 @@ class RegistrationFeeController extends Controller
         $html['thsource'] .= '<th>ID No</th>';
         $html['thsource'] .= '<th>Student Name</th>';
         $html['thsource'] .= '<th>Roll No</th>';
-        $html['thsource'] .= '<th>Registration Fee</th>';
+        $html['thsource'] .= '<th>Monthly Fee</th>';
         $html['thsource'] .= '<th>Discount Amount</th>';
         $html['thsource'] .= '<th>Fee (This student)</th>';
         $html['thsource'] .= '<th>Action</th>';
 
         foreach($allStudent as $key => $v){
-            $registrationfee = FeeCategoryAmount::where('fee_category_id', '1')->where('class_id', $v->class_id)->first();
+            $registrationfee = FeeCategoryAmount::where('fee_category_id', '2')->where('class_id', $v->class_id)->first();
             $color = 'success';
                 $html[$key]['tdsource'] = '<td>'.($key+1).'</td>';
                 $html[$key]['tdsource'] .= '<td>'.$v['student']['id_no'].'</td>';
@@ -63,7 +63,7 @@ class RegistrationFeeController extends Controller
 
                 $html[$key]['tdsource'] .='<td>'.$finalfee.'TK'.'</td>';
                 $html[$key]['tdsource'] .='<td>';
-                $html[$key]['tdsource'] .=' <a class="btn btn-sm btn-'.$color.'" title="Payslip" target="_blank" href="'.route('students.reg.fee.payslip').'?class_id='.$v->class_id.'&student_id='.$v->student_id.'">Fee Slip</a>';
+                $html[$key]['tdsource'] .=' <a class="btn btn-sm btn-'.$color.'" title="Payslip" target="_blank" href="'.route('students.monthly.fee.payslip').'?class_id='.$v->class_id.'&student_id='.$v->student_id.'&month='.$request->month.'">Fee Slip</a>';
                 $html[$key]['tdsource'] .='</td>';
         }
         // dd(@$html);
@@ -73,8 +73,10 @@ class RegistrationFeeController extends Controller
     public function paySlip(Request $request){
         $student_id = $request->student_id;
         $class_id = $request->class_id;
-        $allStudent['std'] = AssignStudent::with(['discount', 'student'])->where('student_id', $student_id)->where('class_id', $class_id)->first();
-        $pdf = PDF::loadView('backend.student.registration_fee.registration-fee-pdf', $allStudent);
+        $data['month'] = $request->month;
+        // dd($data['month']);
+        $data['std'] = AssignStudent::with(['discount', 'student'])->where('student_id', $student_id)->where('class_id', $class_id)->first();
+        $pdf = PDF::loadView('backend.student.monthly_fee.monthly-fee-pdf', $data);
         $pdf->SetProtection(['copy', 'print'], '', 'pass');
         return $pdf->stream('document.pdf');
     }

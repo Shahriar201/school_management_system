@@ -163,5 +163,16 @@ Route::group(['middleware'=>'auth'], function(){
         Route::get('/exam/fee/payslip', 'Backend\Student\ExamFeeController@paySlip')->name('students.exam.fee.payslip');
     });
 
+    Route::prefix('employees')->group(function(){
+
+        Route::get('/reg/view', 'Backend\Employee\EmployeeRegController@view')->name('employees.reg.view');
+        Route::get('/reg/add', 'Backend\Employee\EmployeeRegController@add')->name('employees.reg.add');
+        Route::post('/reg/store', 'Backend\Employee\EmployeeRegController@store')->name('employees.reg.store');  
+        Route::get('/reg/edit/{id}', 'Backend\Employee\EmployeeRegController@edit')->name('employees.reg.edit');
+        Route::post('/reg/update/{id}', 'Backend\Employee\EmployeeRegController@update')->name('employees.reg.update');
+        Route::get('/reg/delete/{id}', 'Backend\Employee\EmployeeRegController@delete')->name('employees.reg.delete');
+        
+    });
+
 });
 

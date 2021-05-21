@@ -49,16 +49,16 @@
                             <table id="example1" class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
-                                        <th>SL.</th>
+                                        <th style="width: 3%">SL.</th>
                                         <th>Name</th>
-                                        <th>ID No</th>
-                                        <th>Mobile No</th>
-                                        <th>Address</th>
-                                        <th>Gender</th>
-                                        <th>Join Date</th>
-                                        <th>Salary</th>
+                                        <th style="width: 5%">ID No</th>
+                                        <th style="width: 11%">Mobile No</th>
+                                        <th style="width: 15%">Address</th>
+                                        <th style="width: 5%">Gender</th>
+                                        <th style="width: 11%">Join Date</th>
+                                        <th style="width: 8%">Salary</th>
                                         @if (Auth::user()->role=="Admin")
-                                        <th>Code</th>
+                                        <th style="width: 8%">Code</th>
                                         @endif
                                         <th>Action</th>
                                     </tr>
@@ -74,7 +74,7 @@
                                         <td>{{ $value->mobile }}</td>
                                         <td>{{ $value->address }}</td>
                                         <td>{{ $value->gender }}</td>
-                                        <td>{{ date('d-m-Y', strtotime($value->join)) }}</td>
+                                        <td>{{ date('d-m-Y', strtotime($value->join_date)) }}</td>
                                         <td>{{ $value->salary }}</td>
                                         @if (Auth::user()->role=="Admin")
                                             <td>{{ $value->code }}</td>
@@ -83,6 +83,9 @@
                                         <td>
                                             <a title="Edit" id="edit" class="btn btn-sm btn-primary" href="{{ route('employees.reg.edit', $value->id)}}">
                                                 <i class="fa fa-edit">  </i>
+                                            </a>
+                                            <a title="Details" target="_blank" id="details" class="btn btn-sm btn-success" href="{{ route('employees.reg.details', $value->id)}}">
+                                                <i class="fa fa-eye">  </i>
                                             </a>
                                             {{-- <a title="Delete" id="delete" class="btn btn-sm btn-danger" href="
                                             {{ route('setups.designation.delete', $value->id) }}">

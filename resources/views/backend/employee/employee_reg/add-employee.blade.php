@@ -119,24 +119,25 @@
                                         @endforeach
                                     </select>
                                 </div>
-
-                                <div class="form-group col-md-3">
-                                    <label>Join Date <font style="color: red">*</font></label>
-                                    <input type="date" name="join_date" value="{{ @$editData->join_date }}" class="form-control form-control-sm singledatepicker" autocomplete="off">
-                                </div>
+                                @if(!@$editData)
+                                    <div class="form-group col-md-3">
+                                        <label>Join Date <font style="color: red">*</font></label>
+                                        <input type="date" name="join_date" value="{{ @$editData->join_date }}" class="form-control form-control-sm singledatepicker" autocomplete="off">
+                                    </div>
+                        
+                                    <div class="form-group col-md-3">
+                                        <label>Salary <font style="color: red">*</font></label>
+                                        <input type="text" name="salary" value="{{ @$editData->salary }}" class="form-control form-control-sm" autocomplete="off">
+                                    </div>
+                                @endif
                                 
-                                <div class="form-group col-md-3">
-                                    <label>Salary <font style="color: red">*</font></label>
-                                    <input type="text" name="salary" value="{{ @$editData->salary }}" class="form-control form-control-sm" autocomplete="off">
-                                </div>
-
                                 <div class="form-group col-md-3">
                                     <label>Image</label>
                                     <input type="file" name="image" class="form-control form-control-sm" id="image">
                                 </div>
                                 
                                 <div class="form-group col-md-3">
-                                    <img id="showImage" src="{{ (!empty($editData['student']['image']))?url('public/upload/student_images/'.$editData['student']['image']):url('public/upload/no_image.jpg') }}"
+                                    <img id="showImage" src="{{ (!empty($editData->image))?url('public/upload/employee_images/'.$editData->image):url('public/upload/no_image.jpg') }}"
                                      style="width: 100px; height: 110px; border: 1px solid #000;">
                                 
                                 </div>

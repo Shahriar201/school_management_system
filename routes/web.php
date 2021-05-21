@@ -164,7 +164,7 @@ Route::group(['middleware'=>'auth'], function(){
     });
 
     Route::prefix('employees')->group(function(){
-
+        //Employee Registration
         Route::get('/reg/view', 'Backend\Employee\EmployeeRegController@view')->name('employees.reg.view');
         Route::get('/reg/add', 'Backend\Employee\EmployeeRegController@add')->name('employees.reg.add');
         Route::post('/reg/store', 'Backend\Employee\EmployeeRegController@store')->name('employees.reg.store');  
@@ -172,6 +172,13 @@ Route::group(['middleware'=>'auth'], function(){
         Route::post('/reg/update/{id}', 'Backend\Employee\EmployeeRegController@update')->name('employees.reg.update');
         Route::get('/reg/delete/{id}', 'Backend\Employee\EmployeeRegController@delete')->name('employees.reg.delete');
         Route::get('/reg/details/{id}', 'Backend\Employee\EmployeeRegController@details')->name('employees.reg.details');
+
+        // Employee Salary
+        Route::get('/salary/view', 'Backend\Employee\EmployeeSalaryController@view')->name('employees.salary.view');  
+        Route::get('/salary/increment/{id}', 'Backend\Employee\EmployeeSalaryController@increment')->name('employees.salary.increment');
+        Route::post('/salary/store/{id}', 'Backend\Employee\EmployeeSalaryController@store')->name('employees.salary.store');
+        Route::get('/salary/delete/{id}', 'Backend\Employee\EmployeeSalaryController@delete')->name('employees.salary.delete');
+        Route::get('/salary/details/{id}', 'Backend\Employee\EmployeeSalaryController@details')->name('employees.salary.details');
         
     });
 

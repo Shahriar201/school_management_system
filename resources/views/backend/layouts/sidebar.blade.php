@@ -230,6 +230,14 @@
                     </a>
                 </li>     
             </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('employees.leave.view') }}" class="nav-link {{ ($route=='employees.leave.view')?'active':'' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Employee Leave</p>
+                    </a>
+                </li>     
+            </ul>
             
         </li>
 

@@ -179,6 +179,15 @@ Route::group(['middleware'=>'auth'], function(){
         Route::post('/salary/store/{id}', 'Backend\Employee\EmployeeSalaryController@store')->name('employees.salary.store');
         Route::get('/salary/delete/{id}', 'Backend\Employee\EmployeeSalaryController@delete')->name('employees.salary.delete');
         Route::get('/salary/details/{id}', 'Backend\Employee\EmployeeSalaryController@details')->name('employees.salary.details');
+
+        //Employee Leave
+        Route::get('/leave/view', 'Backend\Employee\EmployeeLeaveController@view')->name('employees.leave.view');
+        Route::get('/leave/add', 'Backend\Employee\EmployeeLeaveController@add')->name('employees.leave.add');
+        Route::post('/leave/store', 'Backend\Employee\EmployeeLeaveController@store')->name('employees.leave.store');  
+        Route::get('/leave/edit/{id}', 'Backend\Employee\EmployeeLeaveController@edit')->name('employees.leave.edit');
+        Route::post('/leave/update/{id}', 'Backend\Employee\EmployeeLeaveController@update')->name('employees.leave.update');
+        Route::get('/leave/delete/{id}', 'Backend\Employee\EmployeeLeaveController@delete')->name('employees.leave.delete');
+        Route::get('/leave/details/{id}', 'Backend\Employee\EmployeeLeaveController@details')->name('employees.leave.details');
         
     });
 

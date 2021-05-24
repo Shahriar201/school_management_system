@@ -189,6 +189,15 @@ Route::group(['middleware'=>'auth'], function(){
         Route::get('/leave/delete/{id}', 'Backend\Employee\EmployeeLeaveController@delete')->name('employees.leave.delete');
         Route::get('/leave/details/{id}', 'Backend\Employee\EmployeeLeaveController@details')->name('employees.leave.details');
         
+        //Employee Attendance
+        Route::get('/attend/view', 'Backend\Employee\EmployeeAttendController@view')->name('employees.attendance.view');
+        Route::get('/attend/add', 'Backend\Employee\EmployeeAttendController@add')->name('employees.attendance.add');
+        Route::post('/attend/store', 'Backend\Employee\EmployeeAttendController@store')->name('employees.attendance.store');  
+        Route::get('/attend/edit/{id}', 'Backend\Employee\EmployeeAttendController@edit')->name('employees.attendance.edit');
+        Route::post('/attend/update/{id}', 'Backend\Employee\EmployeeAttendController@update')->name('employees.attendance.update');
+        Route::get('/attend/delete/{id}', 'Backend\Employee\EmployeeAttendController@delete')->name('employees.attendance.delete');
+        Route::get('/attend/details/{id}', 'Backend\Employee\EmployeeAttendController@details')->name('employees.attendance.details');
+        
     });
 
 });

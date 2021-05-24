@@ -74,6 +74,53 @@
 
                         <form method="POST" action="{{ route('employees.attendance.store') }}" id="myForm">
                             @csrf
+
+                            @if (isset($editData))
+                            <div class="card-body">
+                                <div class="form-group col-md-4">
+                                    <label for="" class="control-label">Attendance Date</label>
+                                    <input type="date" name="date" value="{{ $editData['0']['date'] }}" id="date" class="checkdate form-control form-control-sm" placeholder="Attendance Date" autocomplete="
+                                    off" readonly>
+                                </div>
+                                <table class="table-sm table-bordered table-striped dt-responsive" style="width: 100%">
+                                    <thead>
+                                        <tr>
+                                            <th rowspan="2" class="text-center" style="vertical-align: middle;">SL.</th>
+                                            <th rowspan="2" class="text-center" style="vertical-align: middle;">Employee Name</th>
+                                            <th colspan="3" class="text-center" style="vertical-align: middle; width: 25%">Attendance Status</th>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center btn present_all" style="display: table-cell; background-color: #6a7992">Present</th>
+                                            <th class="text-center btn leave_all" style="display: table-cell; background-color: #6a7992">Leave</th>
+                                            <th class="text-center btn absent_all" style="display: table-cell; background-color: #6a7992">Absent</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($editData as $key=> $data)
+                                            <tr id="div{{ $data->id }}" class="text-center">
+                                                <input type="hidden" name="employee_id[]" value="{{ $data->employee_id }}" class="employee_id">
+                                                <td>{{ $key+1 }}</td>
+                                                <td>{{ $data['user']['name'] }}</td>
+                                                <td colspan="3">
+                                                    <div class="switch-toggle switch-3 switch-candy">
+                                                        <input class="present" id="present{{ $key }}" name="attend_status{{ $key }}" value="Present" type="radio" {{ ($data->attend_status=='Present')?'checked': '' }}/>
+                                                        <label for="present{{ $key }}">Present</label>
+
+                                                        <input class="leave" id="leave{{ $key }}" name="attend_status{{ $key }}" value="Leave" type="radio" {{ ($data->attend_status=='Leave')?'checked': '' }}/>
+                                                        <label for="leave{{ $key }}">Leave</label>
+
+                                                        <input class="absent" id="absent{{ $key }}" name="attend_status{{ $key }}" value="Absent" type="radio" {{ ($data->attend_status=='Absent')?'checked': '' }}>
+                                                        <label for="absent{{ $key }}">Absent</label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table><br>
+                                <button type="submit" class="btn btn-primary btn-sm">{{ (@$editData)?'Update': 'Submit' }}</button>
+                            </div>
+                            
+                            @else 
                             <div class="card-body">
                                 <div class="form-group col-md-4">
                                     <label for="" class="control-label">Attendance Date</label>
@@ -94,14 +141,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($employees as $key=> $employee)
-                                            <tr id="div{{ $employee->id }}" class="text-center">
-                                                <input type="hidden" name="employee_id[]" value="{{ $employee->id }}" class="employee_id">
+                                        @foreach ($editData as $key=> $data)
+                                            <tr id="div{{ $data->id }}" class="text-center">
+                                                <input type="hidden" name="employee_id[]" value="{{ $data->employee_id }}" class="employee_id">
                                                 <td>{{ $key+1 }}</td>
-                                                <td>{{ $employee->name }}</td>
+                                                <td>{{ $data['user']['name'] }}</td>
                                                 <td colspan="3">
                                                     <div class="switch-toggle switch-3 switch-candy">
-                                                        <input class="present" id="present{{ $key }}" name="attend_status{{ $key }}" value="Present" type="radio" checked="checked">
+                                                        <input class="present" id="present{{ $key }}" name="attend_status{{ $key }}" value="Present" type="radio" checked>
                                                         <label for="present{{ $key }}">Present</label>
 
                                                         <input class="leave" id="leave{{ $key }}" name="attend_status{{ $key }}" value="Leave" type="radio">
@@ -116,7 +163,8 @@
                                     </tbody>
                                 </table><br>
                                 <button type="submit" class="btn btn-primary btn-sm">{{ (@$editData)?'Update': 'Submit' }}</button>
-                            </div>
+                            </div>   
+                            @endif
                         </form>
 
                     </div>

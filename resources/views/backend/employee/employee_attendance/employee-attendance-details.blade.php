@@ -9,7 +9,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Manage Employee Attendance</h1>
+                    <h1 class="m-0">Employee Attendance Details</h1>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-6">
@@ -37,46 +37,38 @@
                     <!-- Custom tabs (Charts with tabs)-->
                     <div class="card">
                         <div class="card-header">
-                            <h3>Employee Attendance List
-                                <a class="btn btn-success float-right btn-sm" href="{{ route('employees.attendance.add') }}">
-                                    <i class="fa fa-plus-circle"></i>Add Employee Attendance</a>
-                                
-                            </h3>
+                            <h3>Employee Attendance Details
+                                <a class="btn btn-success float-right btn-sm" href="{{ route('employees.attendance.view') }}">
+                                    <i class="fa fa-list"></i>Employee Attendance List</a>
+                                 </h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-
                             <table id="example1" class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
                                         <th>SL.</th>
+                                        <th>ID No</th>
+                                        <th>Name</th>
                                         <th>Date</th>
-                                        <th>Action</th>
-
+                                        <th>Attend Status</th>
                                     </tr>
                                 </thead>
-
+                            
                                 <tbody>
-                                    @foreach ($allData as $key => $value)
-
+                                    @foreach ($details as $key => $value)
+                            
                                         <tr class="{{ $value->id }}">
                                             <td>{{ $key+1 }}</td>
-                                            <td>{{ date('d-m-Y', strtotime($value->date)) }}
-                                            <td>
-                                                <a title="Edit" id="edit" class="btn btn-sm btn-primary" href="{{ route('employees.attendance.edit', $value->date)}}">
-                                                    <i class="fa fa-edit">  </i>
-                                                </a>
-                                                <a title="Details" id="details" class="btn btn-sm btn-success" href="{{ route('employees.attendance.details', $value->date)}}">
-                                                    <i class="fa fa-eye">  </i>
-                                                </a>
-                                            </td>
+                                            <td>{{ $value['user']['id_no'] }}</td>
+                                            <td>{{ $value['user']['name'] }}</td>
+                                            <td>{{ date('d-m-Y', strtotime($value->date)) }}</td>
+                                            <td>{{ $value->attend_status }}</td>
                                         </tr>
-                                        
                                     @endforeach
                                     
                                 </tbody>
                             </table>
-                            
                         </div>
                         <!-- /.card-body -->
                     </div>

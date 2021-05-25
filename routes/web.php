@@ -196,6 +196,11 @@ Route::group(['middleware'=>'auth'], function(){
         Route::get('/attend/edit/{date}', 'Backend\Employee\EmployeeAttendController@edit')->name('employees.attendance.edit');
         Route::get('/attend/details/{date}', 'Backend\Employee\EmployeeAttendController@details')->name('employees.attendance.details');
         
+        //Employee Monthly Salary
+        Route::get('/monthly/salary/view', 'Backend\Employee\MonthlySalaryController@view')->name('employees.monthly.salary.view');
+        Route::get('/monthly/salary/get', 'Backend\Employee\MonthlySalaryController@getSalary')->name('employees.monthly.salary.get');
+        Route::get('/monthly/salary/payslip/{employee_id}', 'Backend\Student\ExamFeeController@paySlip')->name('employees.monthly.salary.payslip');
+        
     });
 
 });

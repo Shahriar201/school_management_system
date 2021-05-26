@@ -58,9 +58,9 @@ class MonthlySalaryController extends Controller
 
     public function payslip(Request $request, $employee_id){
         $id = EmployeeAttendance::where('employee_id', $employee_id)->first();
-        $data = date('Y-m', strtotime($id->date));
+        $date = date('Y-m', strtotime($id->date));
         if ($date!='') {
-            where[] = ['date', 'like', $date.'%'];
+            $where[] = ['date', 'like', $date.'%'];
         }
         $data['totalattendancegroupbtid'] = EmployeeAttendance::with(['user'])->where($where)->where('employee_id', $id->employee_id)->get();
         $pdf = PDF::loadView('backend.employee.monthly_salary.employee-pay-slip', $data);

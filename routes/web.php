@@ -199,7 +199,7 @@ Route::group(['middleware'=>'auth'], function(){
         //Employee Monthly Salary
         Route::get('/monthly/salary/view', 'Backend\Employee\MonthlySalaryController@view')->name('employees.monthly.salary.view');
         Route::get('/monthly/salary/get', 'Backend\Employee\MonthlySalaryController@getSalary')->name('employees.monthly.salary.get');
-        Route::get('/monthly/salary/payslip/{employee_id}', 'Backend\Student\ExamFeeController@paySlip')->name('employees.monthly.salary.payslip');
+        Route::get('/monthly/salary/payslip/{employee_id}', 'Backend\Employee\MonthlySalaryController@paySlip')->name('employees.monthly.salary.payslip');
         
     });
 

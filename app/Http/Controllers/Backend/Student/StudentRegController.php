@@ -212,9 +212,9 @@ class StudentRegController extends Controller
 
     public function details($student_id){
         $data['details'] = AssignStudent::with(['student', 'discount'])->where('student_id', $student_id)->first();
+        
         $pdf = PDF::loadView('backend.student.student_reg.student-details-pdf', $data);
-        $pdf->SetProtection(['copy', 'print'], '', 'pass');
-        return $pdf->stream('document.pdf');
+        return $pdf->stream('invoice.pdf');
     }
     
     

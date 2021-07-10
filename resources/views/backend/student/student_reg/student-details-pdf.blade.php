@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Student Details Info</title>
+    <title>Student Registration Details</title>
     <link rel="stylesheet" href="{{ asset('public/backend/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
     <style type="text/css">
         table{
@@ -70,13 +70,13 @@
             <div class="col-md-12">
                 <table width="80%">
                     <tr>
-                        <td width="33%" class="text-center"><img src="{{ url('public/upload/school_image.png'.$report->school_logo) }}" style="width: 100px;heigh: 100px"></td>
+                        <td width="33%" class="text-center"><img src="{{ url('public/upload/school_image.png'.$details->school_logo) }}" style="width: 100px;heigh: 100px"></td>
                         <td class="text-center" width="63%">
                             <h4><strong>Rashidpur High School</strong></h4>
                             <h5><strong>Kaliakair, Gazipur</strong></h5>
                             <h6><strong>www.rashidpurschool.com</strong></h6>
                         </td>
-                        <td class="text-center"><img src="{{ url('public/upload/student_images/'.$details['student']['image']) }}" style="width: 100px: height: 100px"></td>
+                        <td class="text-center"><img src="{{ url('public/upload/schoo.png/'.$details['student']['image']) }}" style="width: 100px: height: 100px"></td>
                     </tr>
                 </table>
             </div>

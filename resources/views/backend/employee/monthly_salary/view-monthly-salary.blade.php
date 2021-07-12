@@ -44,7 +44,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-4">
                                     <label class="control-label">Date</label>
-                                    <input type="date" name="date" id="date" class="form-control form-control-sm" autocomplete="off" >
+                                    <input type="text" name="date" id="date" class="form-control form-control-sm datepicker" autocomplete="off" >
                                 </div>
                                 <div class="form-group col-md-2">
                                     <a class="btn btn-sm btn-success" id="search" style="margin-top: 29px; color: white">Search</a>
@@ -110,6 +110,14 @@
                     $('[data-toggle="tooltip"]').tooltip();
                 }
         });
+    });
+</script>
+
+<!--Datepicker-->
+<script>
+    $('.datepicker').datepicker({
+        uiLibrary: 'bootstrap4',
+        format: 'yyyy-mm-dd'
     });
 </script>
 

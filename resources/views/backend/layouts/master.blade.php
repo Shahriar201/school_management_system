@@ -40,6 +40,8 @@
 
     {{-- Datepicker --}}
     <link rel="stylesheet" href="{{ asset('public/backend') }}/datepicker/daterangepicker.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="{{ asset('public/backend/plugins/daterangepicker/daterangepicker.css') }}">
 
 
     <!-- jQuery -->
@@ -49,6 +51,10 @@
 
     {{-- sweet alert --}}
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    {{-- Select2 --}}
+    <link rel="stylesheet" href="{{ asset('public/backend') }}/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="{{ asset('public/backend') }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 
     {{-- Datepicker --}}
     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
@@ -60,6 +66,10 @@
 
     <!-- Include Handlebars from a CDN -->
     {{-- <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script> --}}
+
+    {{-- Date Picker --}}
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
 
 </head>
@@ -272,7 +282,18 @@
     {{-- Handle Bar js --}}
     <script src="{{ asset('public/backend') }}/js/handlebars-v4.0.12.js"></script>    
 
+    {{-- Select2 --}}
+    <script src="{{ asset('public/backend') }}/plugins/select2/js/select2.full.min.js"></script>
+
+    {{-- Select2 JS--}}
+    <script type="text/javascript">
+        $(function () {
+            $('.select2').select2();
+        })
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    
 
     <script>
         $(function() {

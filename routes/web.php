@@ -203,5 +203,13 @@ Route::group(['middleware'=>'auth'], function(){
         
     });
 
+    Route::prefix('marks')->group(function(){
+        Route::get('/add', 'Backend\Marks\MarksController@add')->name('add.marks');
+        Route::post('/marks/store', 'Backend\Marks\MarksController@store')->name('store.marks');
+    });
+
+    Route::get('/get-student', 'Backend\DefaultController@getStudent')->name('get-student');
+    Route::get('/get-subject', 'Backend\DefaultController@getSubject')->name('get-subject');
+
 });
 

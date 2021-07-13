@@ -273,6 +273,14 @@
                     </a>
                 </li>     
             </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('edit.marks') }}" class="nav-link {{ ($route=='edit.marks')?'active':'' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Marks Edit</p>
+                    </a>
+                </li>     
+            </ul>
                         
         </li>
 

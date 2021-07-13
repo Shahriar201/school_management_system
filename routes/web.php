@@ -204,12 +204,20 @@ Route::group(['middleware'=>'auth'], function(){
     });
 
     Route::prefix('marks')->group(function(){
+        // Marks Entry
         Route::get('/add', 'Backend\Marks\MarksController@add')->name('add.marks');
         Route::post('/marks/store', 'Backend\Marks\MarksController@store')->name('store.marks');
-
+        // Marks Edit
         Route::get('/get', 'Backend\Marks\MarksController@edit')->name('edit.marks');
         Route::get('/get/student/marks', 'Backend\Marks\MarksController@getMarks')->name('get-student-marks');
         Route::post('/student/marks/update', 'Backend\Marks\MarksController@update')->name('update.marks');
+        //Grade Point
+        Route::get('/grade/view', 'Backend\Marks\GradeController@view')->name('marks.grade.view');
+        Route::get('/grade/add', 'Backend\Marks\GradeController@add')->name('marks.grade.add');
+        Route::post('/grade/store', 'Backend\Marks\GradeController@store')->name('marks.grade.store');  
+        Route::get('/grade/edit/{id}', 'Backend\Marks\GradeController@edit')->name('marks.grade.edit');
+        Route::post('/grade/update/{id}', 'Backend\Marks\GradeController@update')->name('marks.grade.update');
+        Route::get('/grade/delete/{id}', 'Backend\Marks\GradeController@delete')->name('marks.grade.delete');
     });
 
     Route::get('/get-student', 'Backend\DefaultController@getStudent')->name('get-student');

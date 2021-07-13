@@ -11,7 +11,7 @@
 
             <li class="nav-item has-treeview {{ ($prefix=='/users')?'menu-open':'' }}">
                 <a href="" class="nav-link">
-                    <i class="nav-icon fas fa-copy"></i>
+                    <i class="nav-icon fa fa-user"></i>
                     <p>
                         Manage User
                         <i class="fas fa-angle-left right"></i>
@@ -32,7 +32,7 @@
 
         <li class="nav-item has-treeview {{ ($prefix=='/profiles')?'menu-open':'' }}">
             <a href="" class="nav-link">
-                <i class="nav-icon fas fa-copy"></i>
+                <i class="nav-icon fa fa-address-card"></i>
                 <p>
                     Manage Profile
                     <i class="fas fa-angle-left right"></i>
@@ -58,7 +58,7 @@
 
         <li class="nav-item has-treeview {{ ($prefix=='/setups')?'menu-open':'' }}">
             <a href="" class="nav-link">
-                <i class="nav-icon fas fa-copy"></i>
+                <i class="nav-icon fa fa-server"></i>
                 <p>
                     Manage Setup
                     <i class="fas fa-angle-left right"></i>
@@ -153,7 +153,7 @@
 
         <li class="nav-item has-treeview {{ ($prefix=='/students')?'menu-open':'' }}">
             <a href="" class="nav-link">
-                <i class="nav-icon fas fa-copy"></i>
+                <i class="nav-icon fa fa-graduation-cap"></i>
                 <p>
                     Manage Student
                     <i class="fas fa-angle-left right"></i>
@@ -278,6 +278,14 @@
                     <a href="{{ route('edit.marks') }}" class="nav-link {{ ($route=='edit.marks')?'active':'' }}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Marks Edit</p>
+                    </a>
+                </li>     
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('marks.grade.view') }}" class="nav-link {{ ($route=='marks.grade.view')?'active':'' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Grade Point</p>
                     </a>
                 </li>     
             </ul>

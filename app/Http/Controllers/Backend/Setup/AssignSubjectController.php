@@ -8,6 +8,7 @@ use App\Model\StudentClass;
 use App\Model\Subject;
 use App\Model\AssignSubject;
 use DB;
+use Auth;
 
 class AssignSubjectController extends Controller
 {
@@ -54,20 +55,21 @@ class AssignSubjectController extends Controller
         if($request->subject_id == NULL){
             return redirect()->back()->with('error', 'Sorry! you do not select any item');
         }else{
-            AssignSubject::where('class_id', $class_id)->delete();
-
-            $subjectCount = count($request->subject_id);
-    
-            for($i = 0; $i < $subjectCount; $i++){
-                $assign_sub = new AssignSubject();
-                $assign_sub->class_id = $request->class_id;
-                $assign_sub->subject_id = $request->subject_id[$i];
-                $assign_sub->full_mark = $request->full_mark[$i];
-                $assign_sub->pass_mark = $request->pass_mark[$i];
-                $assign_sub->subjective_mark = $request->subjective_mark[$i];
-                $assign_sub->save();
+            AssignSubject::whereNotIn('subject_id', $request->subject_id)->where('class_id', $request->class_id)->delete();
+            foreach ($request->subject_id as $key => $value) {
+                $assign_subject_exit = AssignSubject::where('subject_id', $request->subject_id[$key])->where('class_id', $request->class_id)->first();
+                if ($assign_subject_exit) {
+                    $assignSubjects = $assign_subject_exit;
+                }else {
+                    $assignSubjects = new AssignSubject();
+                }
+                $assignSubjects->class_id = $request->class_id;
+                $assignSubjects->subject_id = $request->subject_id[$key];
+                $assignSubjects->full_mark = $request->full_mark[$key];
+                $assignSubjects->pass_mark = $request->pass_mark[$key];
+                $assignSubjects->subjective_mark = $request->subjective_mark[$key];
+                $assignSubjects->save();
             }
-    
         }
         return redirect()->route('setups.assign.subject.view')->with('success', 'Data updated successfully');
     }

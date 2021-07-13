@@ -42,6 +42,6 @@ class StudentRollController extends Controller
         }else{
             return redirect()->back()->with('error', 'Sorry! There are no student');
         }
-        return redirect()->route('students.roll.view')->with('success', 'Successfully roll generated');
+        return redirect()->route('students.roll.view')->with('success', 'Roll generated Successfully');
     }
 }

@@ -220,6 +220,14 @@ Route::group(['middleware'=>'auth'], function(){
         Route::get('/grade/delete/{id}', 'Backend\Marks\GradeController@delete')->name('marks.grade.delete');
     });
 
+    Route::prefix('accounts')->group(function(){
+        // Student Fee
+        Route::get('/student/fee/view', 'Backend\Account\StudentFeeController@view')->name('accounts.fee.view');
+        Route::get('/student/fee/add', 'Backend\Account\StudentFeeController@add')->name('accounts.fee.add');
+        Route::post('/student/fee/store', 'Backend\Account\StudentFeeController@store')->name('accounts.fee.store');
+        Route::get('/student/getStudent', 'Backend\Account\StudentFeeController@getStudent')->name('accounts.fee.getStudent');
+    });
+
     Route::get('/get-student', 'Backend\DefaultController@getStudent')->name('get-student');
     Route::get('/get-subject', 'Backend\DefaultController@getSubject')->name('get-subject');
 

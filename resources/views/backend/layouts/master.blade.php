@@ -38,10 +38,9 @@
         href="{{ asset('public/backend') }}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <link rel="stylesheet" href="{{ asset('public/backend') }}/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
 
-    {{-- Datepicker --}}
-    <link rel="stylesheet" href="{{ asset('public/backend') }}/datepicker/daterangepicker.css">
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="{{ asset('public/backend/plugins/daterangepicker/daterangepicker.css') }}">
+    {{-- Date Picker --}}
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
 
     <!-- jQuery -->
@@ -279,6 +278,10 @@
     <script src="{{ asset('public/backend') }}/plugins/jquery-validation/jquery.validate.min.js"></script>
     <script src="{{ asset('public/backend') }}/plugins/jquery-validation/additional-methods.min.js"></script>
 
+    <!-- daterangepicker -->
+    <script src="{{ asset('public/backend/plugins/moment/moment.min.js') }}"></script>
+    <script src="{{ asset('public/backend/plugins/daterangepicker/daterangepicker.js') }}"></script>
+
     {{-- Handle Bar js --}}
     <script src="{{ asset('public/backend') }}/js/handlebars-v4.0.12.js"></script>    
 
@@ -353,7 +356,7 @@
         });
 
     </script>
-
+    {{-- Date Picker --}}
     <script type="text/javascript">
         $(function() {
             $('.singledatepicker').daterangepicker({
@@ -384,6 +387,7 @@
         });
 
     </script>
+    
 
 </body>
 

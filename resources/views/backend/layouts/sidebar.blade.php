@@ -308,6 +308,14 @@
                     </a>
                 </li>     
             </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('accounts.salary.view') }}" class="nav-link {{ ($route=='accounts.salary.view')?'active':'' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Employee Salary</p>
+                    </a>
+                </li>     
+            </ul>
                   
         </li>
 

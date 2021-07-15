@@ -44,7 +44,8 @@ class StudentFeeController extends Controller
         $date = date('Y-m', strtotime($request->date));
         $data = AssignStudent::with(['discount'])->where('year_id', $year_id)->where('class_id', $class_id)->get();
      
-        $html['thsource'] = '<th>ID No</th>';
+        $html['thsource'] = '<th>SL.</th>';
+        $html['thsource'] .= '<th>ID No</th>';
         $html['thsource'] .= '<th>Student Name</th>';
         $html['thsource'] .= '<th>Father Name</th>';
         $html['thsource'] .= '<th>Original Fee</th>';
@@ -61,7 +62,8 @@ class StudentFeeController extends Controller
                 $checked = '';
             }
             // $color = 'success';
-            $html[$key]['tdsource'] = '<td>'.$std['student']['id_no'].'<input type="hidden" name="fee_category_id" value="'.$fee_category_id.'">'.'</td>';
+            $html[$key]['tdsource'] = '<td>'.($key+1).'</td>';
+            $html[$key]['tdsource'] .= '<td>'.$std['student']['id_no'].'<input type="hidden" name="fee_category_id" value="'.$fee_category_id.'">'.'</td>';
             $html[$key]['tdsource'] .= '<td>'.$std['student']['name'].'<input type="hidden" name="year_id" value="'.$year_id.'">'.'</td>';
             $html[$key]['tdsource'] .= '<td>'.$std['student']['fname'].'<input type="hidden" name="class_id" value="'.$class_id.'">'.'</td>';
             $html[$key]['tdsource'] .= '<td>'.$student_fee['amount'].'Tk'.'<input type="hidden" name="date" value="'.$date.'">'.'</td>';

@@ -78,7 +78,7 @@ Route::group(['middleware'=>'auth'], function(){
         Route::post('/student/shift/update/{id}', 'Backend\Setup\ShiftController@update')->name('setups.student.shift.update');
         Route::get('/student/shift/delete/{id}', 'Backend\Setup\ShiftController@delete')->name('setups.student.shift.delete');
         
-        //Fee Category
+        //salary Category
         Route::get('/fee/category/view', 'Backend\Setup\FeeCategoryController@view')->name('setups.fee.category.view');
         Route::get('/fee/category/add', 'Backend\Setup\FeeCategoryController@add')->name('setups.fee.category.add');
         Route::post('/fee/category/store', 'Backend\Setup\FeeCategoryController@store')->name('setups.fee.category.store');  
@@ -226,6 +226,11 @@ Route::group(['middleware'=>'auth'], function(){
         Route::get('/student/fee/add', 'Backend\Account\StudentFeeController@add')->name('accounts.fee.add');
         Route::post('/student/fee/store', 'Backend\Account\StudentFeeController@store')->name('accounts.fee.store');
         Route::get('/student/getStudent', 'Backend\Account\StudentFeeController@getStudent')->name('accounts.fee.getStudent');
+        // Employee Salary
+        Route::get('/employee/salary/view', 'Backend\Account\SalaryController@view')->name('accounts.salary.view');
+        Route::get('/employee/salary/add', 'Backend\Account\SalaryController@add')->name('accounts.salary.add');
+        Route::post('/employee/salary/store', 'Backend\Account\SalaryController@store')->name('accounts.salary.store');
+        Route::get('/employee/getEmployee', 'Backend\Account\SalaryController@getEmployee')->name('accounts.salary.getEmployee');
     });
 
     Route::get('/get-student', 'Backend\DefaultController@getStudent')->name('get-student');

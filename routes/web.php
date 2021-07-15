@@ -231,6 +231,12 @@ Route::group(['middleware'=>'auth'], function(){
         Route::get('/employee/salary/add', 'Backend\Account\SalaryController@add')->name('accounts.salary.add');
         Route::post('/employee/salary/store', 'Backend\Account\SalaryController@store')->name('accounts.salary.store');
         Route::get('/employee/getEmployee', 'Backend\Account\SalaryController@getEmployee')->name('accounts.salary.getEmployee');
+        // Others Cost
+        Route::get('/cost/view', 'Backend\Account\OtherCostController@view')->name('accounts.cost.view');
+        Route::get('/cost/add', 'Backend\Account\OtherCostController@add')->name('accounts.cost.add');
+        Route::post('/cost/store', 'Backend\Account\OtherCostController@store')->name('accounts.cost.store');
+        Route::get('/cost/edit/{id}', 'Backend\Account\OtherCostController@edit')->name('accounts.cost.edit');
+        Route::post('/cost/uplate/{id}', 'Backend\Account\OtherCostController@update')->name('accounts.cost.update');
     });
 
     Route::get('/get-student', 'Backend\DefaultController@getStudent')->name('get-student');

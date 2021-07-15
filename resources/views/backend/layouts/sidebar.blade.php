@@ -316,6 +316,14 @@
                     </a>
                 </li>     
             </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('accounts.cost.view') }}" class="nav-link {{ ($route=='accounts.cost.view')?'active':'' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Others Cost</p>
+                    </a>
+                </li>     
+            </ul>
                   
         </li>
 

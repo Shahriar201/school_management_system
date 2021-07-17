@@ -326,6 +326,25 @@
             </ul>
                   
         </li>
+        
+        <li class="nav-item has-treeview {{ ($prefix=='/reports')?'menu-open':'' }}">
+            <a href="" class="nav-link">
+                <i class="nav-icon 	fas fa-chart-pie"></i>
+                <p>
+                    Manage Reports
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('reports.profit.view') }}" class="nav-link {{ ($route=='reports.profit.view')?'active':'' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Monthly Profit</p>
+                    </a>
+                </li>     
+            </ul>
+                  
+        </li>
 
     </ul>
 </nav>

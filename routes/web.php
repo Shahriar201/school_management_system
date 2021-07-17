@@ -239,6 +239,13 @@ Route::group(['middleware'=>'auth'], function(){
         Route::post('/cost/uplate/{id}', 'Backend\Account\OtherCostController@update')->name('accounts.cost.update');
     });
 
+    Route::prefix('reports')->group(function(){
+        //Profit
+        Route::get('/profit/view', 'Backend\Report\ProfitController@view')->name('reports.profit.view');
+        Route::get('/profit/get', 'Backend\Report\ProfitController@profit')->name('reports.profit.datewise.get');
+        Route::get('/profit/pdf', 'Backend\Report\ProfitController@pdf')->name('reports.profit.pdf');
+    });
+
     Route::get('/get-student', 'Backend\DefaultController@getStudent')->name('get-student');
     Route::get('/get-subject', 'Backend\DefaultController@getSubject')->name('get-subject');
 

@@ -343,6 +343,22 @@
                     </a>
                 </li>     
             </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('reports.marksheet.view') }}" class="nav-link {{ ($route=='reports.marksheet.view')?'active':'' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Marksheet</p>
+                    </a>
+                </li>     
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('reports.attendance.view') }}" class="nav-link {{ ($route=='reports.attendance.view')?'active':'' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Attendance Report</p>
+                    </a>
+                </li>     
+            </ul>
                   
         </li>
 

@@ -9,6 +9,12 @@ use App\Model\AccountEmployeeSalary;
 use App\Model\EmployeeAttendance;
 use App\Model\AccountOtherCost;
 use PDF;
+use App\User;
+use App\Model\StudentMarks;
+use App\Model\ExamType;
+use App\Model\StudentClass;
+use App\Model\Year;
+use App\Model\MarksGrade;
 
 class ProfitController extends Controller
 {
@@ -62,5 +68,48 @@ class ProfitController extends Controller
 
         $pdf = PDF::loadView('backend.report.pdf.monthly-profit-pdf', $data);
         return $pdf->stream('montyly/yearly profit.pdf');
+    }
+
+    public function marksheetView(){
+        $data['years'] = Year::orderBy('id', 'desc')->get();
+        $data['classes'] = StudentClass::all();
+        $data['exam_types'] = ExamType::all();
+
+        return view('backend.report.marksheet-view', $data);
+    }
+
+    public function marksheetGet(Request $request){
+        $year_id = $request->year_id;
+        $class_id = $request->class_id;
+        $exam_type_id = $request->exam_type_id;
+        $id_no = $request->id_no;
+
+        $count_fail = StudentMarks::where('year_id', $year_id)->where('class_id', $class_id)->where('exam_type_id', $exam_type_id)->where('id_no', $id_no)->where('marks', '<', '33')->get()->count();
+        $single_student = StudentMarks::where('year_id', $year_id)->where('class_id', $class_id)->where('exam_type_id', $exam_type_id)->where('id_no', $id_no)->first();
+        if ($single_student == true) {
+            $allMarks = StudentMarks::with(['assign_subject', 'year'])->where('year_id', $year_id)->where('class_id', $class_id)->where('exam_type_id', $exam_type_id)->where('id_no', $id_no)->get();
+            $allGrades = MarksGrade::all();
+
+            return view('backend.report.pdf.marksheet-pdf', compact('allMarks', 'allGrades', 'count_fail'));
+        }else {
+            return redirect()->back()->with('error', 'Sorry! These criteria does not match');
+        }
+    }
+
+    public function attendanceView(){
+        $data['employees'] = User::where('user_type', 'employee')->get();
+
+        return view('backend.report.attendance-view', $data);
+    }
+    
+    public function attendanceprofit(Request $request){
+        $employee_id = $request->employee_id;
+        if ($employee_id != '') {
+            $where[] = ['employee_id', $employee_id];
+        }
+        $date = date('Y-m', strtotime($request->date));
+        if ($date != '') {
+            $where[] = ['date', 'like', $date.'%'];
+        }
     }
 }

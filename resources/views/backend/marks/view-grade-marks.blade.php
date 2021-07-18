@@ -67,10 +67,13 @@
                                         <tr class="{{ $value->id }}">
                                             <td>{{ $key+1 }}</td>
                                             <td>{{ $value->grade_name }}</td>
-                                            <td>{{ $value->grade_point }}</td>
+                                            <td>{{ number_format((float)$value->grade_point,2) }}</td>
                                             <td>{{ $value->start_marks }}</td>
                                             <td>{{ $value->end_marks }}</td>
-                                            <td>{{ $value->start_point }} - {{ $value->end_point }}</td>
+                                            <td>
+                                                {{ number_format((float)$value->grade_point,2) }} - {{ ($value->grade_point == 5)
+                                                ?(number_format((float)$value->grade_point,2)):(number_format((float)$value->grade_point+1,2) - (float)0.01) }}
+                                            </td>
                                             <td>{{ $value->remarks }}</td>
                                             <td>
                                                 <a title="Edit" id="edit" class="btn btn-sm btn-primary" href="{{ route('marks.grade.edit', $value->id)}}">

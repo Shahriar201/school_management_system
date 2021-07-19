@@ -249,8 +249,7 @@ Route::group(['middleware'=>'auth'], function(){
         Route::get('/marksheet/get', 'Backend\Report\ProfitController@marksheetGet')->name('reports.marksheet.get');
         //Attendance Report
         Route::get('/attendance/view', 'Backend\Report\ProfitController@attendanceView')->name('reports.attendance.view');
-        Route::get('/attendance/get', 'Backend\Report\ProfitController@attendanceprofit')->name('reports.attendance.get');
-        // Route::get('/attendance/pdf', 'Backend\Report\ProfitController@pdf')->name('reports.attendance.pdf');
+        Route::get('/attendance/get', 'Backend\Report\ProfitController@attendanceGet')->name('reports.attendance.get');
     });
 
     Route::get('/get-student', 'Backend\DefaultController@getStudent')->name('get-student');

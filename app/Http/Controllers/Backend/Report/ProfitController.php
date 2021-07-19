@@ -70,7 +70,8 @@ class ProfitController extends Controller
         return $pdf->stream('montyly/yearly profit.pdf');
     }
 
-    public function marksheetView(){
+    public function marksheetView()
+    {
         $data['years'] = Year::orderBy('id', 'desc')->get();
         $data['classes'] = StudentClass::all();
         $data['exam_types'] = ExamType::all();
@@ -78,7 +79,8 @@ class ProfitController extends Controller
         return view('backend.report.marksheet-view', $data);
     }
 
-    public function marksheetGet(Request $request){
+    public function marksheetGet(Request $request)
+    {
         $year_id = $request->year_id;
         $class_id = $request->class_id;
         $exam_type_id = $request->exam_type_id;
@@ -91,18 +93,20 @@ class ProfitController extends Controller
             $allGrades = MarksGrade::all();
 
             return view('backend.report.pdf.marksheet-pdf', compact('allMarks', 'allGrades', 'count_fail'));
-        }else {
+        } else {
             return redirect()->back()->with('error', 'Sorry! These criteria does not match');
         }
     }
 
-    public function attendanceView(){
+    public function attendanceView()
+    {
         $data['employees'] = User::where('user_type', 'employee')->get();
 
-        return view('backend.report.attendance-view', $data);
+        return view('backend.report.view-attendance', $data);
     }
     
-    public function attendanceprofit(Request $request){
+    public function attendanceGet(Request $request)
+    {
         $employee_id = $request->employee_id;
         if ($employee_id != '') {
             $where[] = ['employee_id', $employee_id];
@@ -110,6 +114,18 @@ class ProfitController extends Controller
         $date = date('Y-m', strtotime($request->date));
         if ($date != '') {
             $where[] = ['date', 'like', $date.'%'];
+        }
+        $single_attendance = EmployeeAttendance::with(['user'])->where($where)->first();
+        if ($single_attendance == true) {
+            $data['allData'] = EmployeeAttendance::with(['user'])->where($where)->get();
+            $data['absents'] = EmployeeAttendance::with(['user'])->where($where)->where('attend_status', 'Absent')->get()->count();
+            $data['leaves'] = EmployeeAttendance::with(['user'])->where($where)->where('attend_status', 'Leave')->get()->count();
+            $data['month'] = date('M Y', strtotime($request->date));
+
+            $pdf = PDF::loadView('backend.report.pdf.attendance-pdf', $data);
+            return $pdf->stream('employee_attendance_report.pdf');
+        }else {
+            return redirect()->back()->with('error', 'Sorry! these criteria does not match');
         }
     }
 }

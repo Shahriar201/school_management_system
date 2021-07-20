@@ -250,6 +250,9 @@ Route::group(['middleware'=>'auth'], function(){
         //Attendance Report
         Route::get('/attendance/view', 'Backend\Report\ProfitController@attendanceView')->name('reports.attendance.view');
         Route::get('/attendance/get', 'Backend\Report\ProfitController@attendanceGet')->name('reports.attendance.get');
+        //All Student Result
+        Route::get('/result/view', 'Backend\Report\ProfitController@resultView')->name('reports.result.view');
+        Route::get('/result/get', 'Backend\Report\ProfitController@resultGet')->name('reports.result.get');
     });
 
     Route::get('/get-student', 'Backend\DefaultController@getStudent')->name('get-student');

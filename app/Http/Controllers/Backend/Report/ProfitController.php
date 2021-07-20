@@ -105,8 +105,7 @@ class ProfitController extends Controller
         return view('backend.report.view-attendance', $data);
     }
     
-    public function attendanceGet(Request $request)
-    {
+    public function attendanceGet(Request $request){
         $employee_id = $request->employee_id;
         if ($employee_id != '') {
             $where[] = ['employee_id', $employee_id];
@@ -125,6 +124,29 @@ class ProfitController extends Controller
             $pdf = PDF::loadView('backend.report.pdf.attendance-pdf', $data);
             return $pdf->stream('employee_attendance_report.pdf');
         }else {
+            return redirect()->back()->with('error', 'Sorry! these criteria does not match');
+        }
+    }
+
+    public function resultView(){
+        $data['years'] = Year::orderBy('id', 'desc')->get();
+        $data['classes'] = StudentClass::all();
+        $data['exam_types'] = ExamType::all();
+
+        return view('backend.report.view-result', $data);
+    }
+
+    public function resultGet(Request $request){
+        $year_id = $request->year_id;
+        $class_id = $request->class_id;
+        $exam_type_id = $request->exam_type_id;
+        $single_result = StudentMarks::where('year_id', $year_id)->where('class_id', $class_id)->where('exam_type_id', $exam_type_id)->first();
+        if ($single_result == true) {
+            $data['allData'] = StudentMarks::select('year_id', 'class_id', 'exam_type_id', 'student_id')->where('year_id', $year_id)->where('class_id', $class_id)->where('exam_type_id', $exam_type_id)->groupBy('year_id')->groupBy('class_id')->groupBy('exam_type_id')->groupBy('student_id')->get();
+
+            $pdf = PDF::loadView('backend.report.pdf.result-pdf', $data);
+            return $pdf->stream('student_result.pdf');
+        }else{
             return redirect()->back()->with('error', 'Sorry! these criteria does not match');
         }
     }

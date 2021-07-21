@@ -253,6 +253,9 @@ Route::group(['middleware'=>'auth'], function(){
         //All Student Result
         Route::get('/result/view', 'Backend\Report\ProfitController@resultView')->name('reports.result.view');
         Route::get('/result/get', 'Backend\Report\ProfitController@resultGet')->name('reports.result.get');
+        //Student ID Card
+        Route::get('/id-card/view', 'Backend\Report\ProfitController@idCardView')->name('reports.id-card.view');
+        Route::get('/id-card/get', 'Backend\Report\ProfitController@idCardGet')->name('reports.id-card.get');
     });
 
     Route::get('/get-student', 'Backend\DefaultController@getStudent')->name('get-student');

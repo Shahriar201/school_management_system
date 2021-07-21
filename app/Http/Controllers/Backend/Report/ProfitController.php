@@ -15,6 +15,7 @@ use App\Model\ExamType;
 use App\Model\StudentClass;
 use App\Model\Year;
 use App\Model\MarksGrade;
+use App\Model\AssignStudent;
 
 class ProfitController extends Controller
 {
@@ -150,4 +151,26 @@ class ProfitController extends Controller
             return redirect()->back()->with('error', 'Sorry! these criteria does not match');
         }
     }
+    
+    public function idCardView(){
+        $data['years'] = Year::orderBy('id', 'desc')->get();
+        $data['classes'] = StudentClass::all();
+
+        return view('backend.report.view-id-card', $data);
+    }
+
+    public function idCardGet(Request $request){
+        $year_id = $request->year_id;
+        $class_id = $request->class_id;
+        $check_data = AssignStudent::where('year_id', $year_id)->where('class_id', $class_id)->first();
+        if ($check_data == true) {
+            $data['allData'] = AssignStudent::where('year_id', $year_id)->where('class_id', $class_id)->get();
+            // dd($data['allData']->toArray());
+            $pdf = PDF::loadView('backend.report.pdf.id-card-pdf', $data);
+            return $pdf->stream('student_result.pdf');
+        }else{
+            return redirect()->back()->with('error', 'Sorry! these criteria does not match');
+        }
+    }
+
 }

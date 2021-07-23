@@ -79,7 +79,7 @@
                                     <p style="color: red: font-size: 20px; margin-bottom: 5px !important">
                                         <strong>Rashidpur High School</strong>
                                         <i>Kaliakair, Gazipur</i>
-                                    </p><br/>
+                                    </p>
                                     <p class="btn btn-primary" style="padding: 3px; font-size: 18px;">Student ID Card</p>
                                 </td>
                                 <td width="30%" class="text-right" style="padding: 10px;">
@@ -87,9 +87,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td width="65%" style="padding: 10px 3px 10px 5px"><p style="font-size: 16px;"><strong>Name :</strong>{{ $data['student']['name'] }}</p></td>
-                                <td width="2%" style="padding: 10px 3px 10px 5px"></td>
-                                <td width="33" style="padding: 10px 3px 10px 5px"><p style="font-size: 16px;"><strong>ID No :</strong>{{ $data['student']['id_no'] }}</p></td>
+                                <td width="45%" style="padding: 10px 3px 10px 5px"><p style="font-size: 16px;"><strong>Name :</strong>{{ $data['student']['name'] }}</p></td>
+                                <td width="10%" style="padding: 10px 3px 10px 5px"></td>
+                                <td width="45%" style="padding: 10px 3px 10px 5px"><p style="font-size: 16px;"><strong>ID No :</strong>{{ $data['student']['id_no'] }}</p></td>
                             </tr>
                             <tr>
                                 <td width="40%" style="padding: 10px 3px 10px 5px"><p style="font-size: 16px;"><strong>Session :</strong>{{ $data['year']['name'] }}</p></td>
@@ -97,11 +97,11 @@
                                 <td width="40%" style="padding: 10px 3px 10px 5px"><p style="font-size: 16px;"><strong>Session :</strong>{{ $data['year']['name'] }}</p></td>
                                 <td width="20%" style="padding: 10px 3px 10px 5px"><p style="font-size: 16px;"><strong>Roll :</strong>{{ $data->roll }}</p></td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <td width="33%" style="padding: 15px 3px 5px 3px"></td>
                                 <td width="33%" style="padding: 15px 3px 5px 3px"></td>
                                 <td width="33%" style="padding: 15px 3px 5px 3px"></td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <td width="50%" style="padding: 10px 3px 10px 5px"><p style="font-size: 16px;"><strong>Mobile NO : </strong>{{ $data['student']['mobile'] }}</p></td>
                                 <td></td>

@@ -329,7 +329,7 @@
         
         <li class="nav-item has-treeview {{ ($prefix=='/reports')?'menu-open':'' }}">
             <a href="" class="nav-link">
-                <i class="nav-icon 	fas fa-chart-pie"></i>
+                <i class="nav-icon 	fas fa-file"></i>
                 <p>
                     Manage Reports
                     <i class="fas fa-angle-left right"></i>
